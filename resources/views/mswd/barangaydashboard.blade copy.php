@@ -1,21 +1,34 @@
 @extends('layouts.template')
 @section('content')
+<div class="content">
+                    <div class="container">
 
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-                                <h4 class="mb-sm-0">MSWD</h4>
-
-                                <div class="page-title-right">
-                                    <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                        <li class="breadcrumb-item active">Barangay Dashboard</li>
+                        <div class="row">
+                            
+							<div class="col-xs-12">
+								<div class="page-title-box">
+                                    <h4 class="page-title"><b>PROFILE SUMMARY</b></h4>
+                                  
+                                    <ol class="breadcrumb p-0">
+                                        <li>
+                                         <h6>  
+                                            MSWD 
+                                            SAN AGUSTIN 
+                                            SURIGAO DEL SUR
+                                                
+                                        </h6> 
+                                      
+                                            
+                                        </li>
                                     </ol>
+                                    <div class="clearfix"></div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
+							</div>
+						</div>
+                        <!-- end row -->
+
+
+                        <div class="row">
                             <div class="col-xs-12 col-md-6 col-lg-6 col-xl-3">
                                 <div class="card-box tilebox-one">
                                     <i class="icon-layers pull-xs-right text-muted"></i>
@@ -51,7 +64,71 @@
                                     <span class="text-muted"><a href="{{route('archive')}}">View Records</a></span>
                                 </div>
                             </div>
-                        </div><br>
+                        </div>
+                        <!-- end row -->
+
+<!-- 
+                        <div class="row">
+                            <div class="col-xs-12 col-lg-12 col-xl-8">
+                                <div class="card-box">
+
+                                    <h4 class="header-title m-t-0 m-b-20">Sales Statistics</h4>
+
+                                    <div class="text-xs-center">
+                                        <ul class="list-inline chart-detail-list m-b-0">
+                                            <li class="list-inline-item">
+                                                <h6 style="color: #3db9dc;"><i class="zmdi zmdi-circle-o m-r-5"></i>Series A</h6>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <h6 style="color: #1bb99a;"><i class="zmdi zmdi-triangle-up m-r-5"></i>Series B</h6>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <h6 style="color: #818a91;"><i class="zmdi zmdi-square-o m-r-5"></i>Series C</h6>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div id="morris-bar-stacked" style="height: 320px;"></div>
+
+                        		</div>
+                            </div>
+
+                            <div class="col-xs-12 col-lg-12 col-xl-4">
+                                <div class="card-box">
+
+                                    <h4 class="header-title m-t-0 m-b-30">Trends Monthly</h4>
+
+                                    <div class="text-xs-center m-b-20">
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button type="button" class="btn btn-sm btn-secondary">Today</button>
+                                            <button type="button" class="btn btn-sm btn-secondary">This Week</button>
+                                            <button type="button" class="btn btn-sm btn-secondary">Last Week</button>
+                                        </div>
+                                    </div>
+
+                                    <div id="morris-donut-example" style="height: 263px;"></div>
+
+                                    <div class="text-xs-center">
+                                        <ul class="list-inline chart-detail-list m-b-0">
+                                            <li class="list-inline-item">
+                                                <h6 style="color: #3db9dc;"><i class="zmdi zmdi-circle-o m-r-5"></i>English</h6>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <h6 style="color: #1bb99a;"><i class="zmdi zmdi-triangle-up m-r-5"></i>Italian</h6>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <h6 style="color: #818a91;"><i class="zmdi zmdi-square-o m-r-5"></i>French</h6>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                        		</div>
+                            </div>
+
+
+                        </div> -->
+                        <!-- end row -->
+
 
                         <div class="row">
                         <div class="col-xs-12 col-lg-12 col-xl-5">
@@ -212,8 +289,12 @@
 
                     </div> 
 
-                    </div>          
+                </div> 
 
-
-
+              
+                    
 @endsection
+@section('js')
+
+
+

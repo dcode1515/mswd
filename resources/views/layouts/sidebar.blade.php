@@ -7,7 +7,7 @@
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                        
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="widgets.html">
+                            <a href="{{route('barangay.dashboard')}}" class="nav-link menu-link" href="widgets.html">
                                 <i class="ri-dashboard-2-line"></i> <span data-key="t-widgets">Dashboard</span>
                             </a>
                         </li>
