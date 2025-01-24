@@ -1,0 +1,30 @@
+-Type of School
+-School Level
+-Name of School
+-Ethnicity Placeholder="KAMAYO,BISAYA TAGALOG"
+-4p's Member (Yes or No)
+Dashboard Clickable
+MSWD PROFILING dakuon ang system sidebar 
+PUBLIC REGISTRATION WITH modal instruction
+ALL CAPSLOCK
+CENTER TABLE DATA
+CLICKABLE BARANGAY IN DASHBOARD
+ADD DASHBOARD 18 ABOVE TABLE
+AGE CATEGORY tapad sa table
+reports apg filter mogawas sa table(Weigth Status)
+remove barangay filter (add other column)
+(Add dropdown barangay barangay sidebar)
+
+ang pag filter mogawas sa una ang table bago ang print
+
+
+03/4/2023
+Add report 4'ps
+lgbtq sa dashboard i add 
+print pdf add column child class,4'ps,disabled,pag 0-2 to 3-5 lang (Weight Status)
+Search Gender Male Female Boolean true or false
+
+
+
+
+
