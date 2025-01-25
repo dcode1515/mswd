@@ -61,7 +61,7 @@
                     <th>School Level</th>
                     <th>4ps Member</th>
                     <th>Status</th>
-                    <!-- <th>Action</th> -->
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -89,6 +89,21 @@
                     <td>{{ profile.schoollevel }}</td>
                     <td>{{ profile.forpsno }}</td>
                     <td>{{ profile.status }}</td>
+                      <td>
+                      <a :href="'/mswd/view/'+ profile.id"
+                        class="btn btn-sm btn-primary"
+                        title="View"
+                      >
+                        <i class="fas fa-eye"></i>
+                      </a>
+                      <button
+                        @click="archiveProfile(profile.id)"
+                        class="btn btn-sm btn-danger ml-2"
+                        title="Delete"
+                      >
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td>
                     <!-- <td>
                       <button
                         @click="viewProfile(profile)"

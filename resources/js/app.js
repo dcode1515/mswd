@@ -46,7 +46,7 @@ Vue.component('Category1', require('./components/Category1.vue').default);
 Vue.component('Category2', require('./components/Category2.vue').default);
 Vue.component('Category3', require('./components/Category3.vue').default);
 Vue.component('Category4', require('./components/Category4.vue').default);
-
+Vue.component('Createprofile', require('./components/Createprofile.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

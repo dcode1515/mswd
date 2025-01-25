@@ -61,6 +61,7 @@
                     <th>School Level</th>
                     <th>4ps Member</th>
                     <th>Status</th>
+                    <th>Action</th>
                     <!-- <th>Action</th> -->
                   </tr>
                 </thead>
@@ -89,22 +90,21 @@
                     <td>{{ profile.schoollevel }}</td>
                     <td>{{ profile.forpsno }}</td>
                     <td>{{ profile.status }}</td>
-                    <!-- <td>
-                      <button
-                        @click="viewProfile(profile)"
+                    <td>
+                      <a :href="'/mswd/view/'+ profile.id"
                         class="btn btn-sm btn-primary"
                         title="View"
                       >
                         <i class="fas fa-eye"></i>
-                      </button>
+                      </a>
                       <button
-                        @click="deleteProfile(profile.id)"
+                        @click="archiveProfile(profile.id)"
                         class="btn btn-sm btn-danger ml-2"
                         title="Delete"
                       >
                         <i class="fas fa-trash"></i>
                       </button>
-                    </td> -->
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -377,6 +377,40 @@ export default {
     };
   },
   methods: {
+    async archiveProfile(id) {
+      try {
+        // Confirm the archive action
+        const confirmArchive = await Swal.fire({
+          title: "Are you sure?",
+          text: "This profile will be archived!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#d33",
+          cancelButtonColor: "#3085d6",
+          confirmButtonText: "Yes, archive it!",
+        });
+
+        // If the user confirms, proceed with the archive
+        if (confirmArchive.isConfirmed) {
+          const response = await axios.post(`/mswd/api/archive/${id}`);
+          Swal.fire({
+            title: "Archived!",
+            text: response.data.message || "Profile archived successfully.",
+            icon: "success",
+            confirmButtonText: "Okay",
+          }).then(() => {
+            window.location.href = "/mswd/all-records"; // Redirect after archiving
+          });
+        }
+      } catch (error) {
+        Swal.fire({
+          title: "Error!",
+          text: error.response.data.error || "An error occurred while archiving the profile.",
+          icon: "error",
+          confirmButtonText: "Okay",
+        });
+      }
+    },
     async getDataProfile() {
       try {
         const response = await axios.get("/mswd/api/get/data/mswd", {

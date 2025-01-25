@@ -22,7 +22,6 @@
               style="text-transform: uppercase"
               type="text"
               v-model="formData.lastname"
-              :disabled="isViewMode"
             />
             <br />
           </div>
@@ -37,7 +36,6 @@
               style="text-transform: uppercase"
               type="text"
               v-model="formData.firstname"
-              :disabled="isViewMode"
             />
             <br />
           </div>
@@ -50,7 +48,6 @@
               style="text-transform: uppercase"
               type="text"
               v-model="formData.middlename"
-              :disabled="isViewMode"
             />
             <span style="color: red">Optional</span><br />
             <br />
@@ -64,7 +61,6 @@
               style="text-transform: uppercase"
               type="text"
               v-model="formData.extension"
-              :disabled="isViewMode"
             />
             <span style="color: red">Optional</span><br />
             <br />
@@ -75,12 +71,7 @@
             >Birthdate<font color="red">*</font></label
           >
           <div class="col-sm-10">
-            <input
-              class="form-control"
-              type="date"
-              v-model="formData.birthdate"
-              :disabled="isViewMode"
-            />
+            <input class="form-control" type="date" v-model="bdate" />
             <span style="color: red">(Month/Date/Year)</span><br />
             <br />
           </div>
@@ -109,11 +100,7 @@
             >LGBT<font color="red">*</font></label
           >
           <div class="col-sm-10">
-            <select
-              v-model="formData.lgbt"
-              class="form-control"
-              :disabled="isViewMode"
-            >
+            <select v-model="formData.lgbt" class="form-control">
               <option disabled value="">Select LGBT</option>
               <option value="NO">NO</option>
               <option value="YES">YES</option>
@@ -130,11 +117,7 @@
             >Weight Status<font color="red">*</font></label
           >
           <div class="col-sm-10">
-            <select
-              v-model="formData.weightstatus"
-              class="form-control"
-              :disabled="isViewMode"
-            >
+            <select v-model="formData.weightstatus" class="form-control">
               <option disabled value="">Select Weight Status</option>
               <option value="Obese">Obese</option>
               <option value="Stunted">Stunted</option>
@@ -154,11 +137,7 @@
             >Child Classification<font color="red">*</font></label
           >
           <div class="col-sm-10">
-            <select
-              v-model="formData.childClassification"
-              class="form-control"
-              :disabled="isViewMode"
-            >
+            <select v-model="formData.childClassification" class="form-control">
               <option disabled value="">Select Child Classification</option>
               <option value="In School Youth">In School Youth</option>
               <option value="Out of School Youth">Out of School Youth</option>
@@ -173,11 +152,7 @@
               >Type of School<font color="red">*</font></label
             >
             <div class="col-sm-10">
-              <select
-                v-model="formData.typeofschool"
-                class="form-control"
-                :disabled="isViewMode"
-              >
+              <select v-model="formData.typeofschool" class="form-control">
                 <option disabled value="">Select Name of School</option>
                 <option value="Private">Private</option>
                 <option value="Public">Public</option>
@@ -191,11 +166,7 @@
               >School Level<font color="red">*</font></label
             >
             <div class="col-sm-10">
-              <select
-                v-model="formData.schoollevel"
-                class="form-control"
-                :disabled="isViewMode"
-              >
+              <select v-model="formData.schoollevel" class="form-control">
                 <option value="Day Care">Day Care</option>
                 <option value="Elementary">Elementary</option>
                 <option value="High School">High School</option>
@@ -216,11 +187,7 @@
             >Gender<font color="red">*</font></label
           >
           <div class="col-sm-10">
-            <select
-              v-model="formData.gender"
-              class="form-control"
-              :disabled="isViewMode"
-            >
+            <select v-model="formData.gender" class="form-control">
               <option value="Male">Male</option>
               <option value="Female">Female</option>
             </select>
@@ -232,11 +199,7 @@
             >Barangay<font color="red">*</font></label
           >
           <div class="col-sm-10">
-            <select
-              v-model="formData.barangay"
-              class="form-control"
-              :disabled="isViewMode"
-            >
+            <select v-model="formData.barangay" class="form-control">
               <option disabled value="">Select Barangay</option>
               <option value="BRITANIA">BRITANIA</option>
               <option value="BUATONG">BUATONG</option>
@@ -265,7 +228,6 @@
               type="text"
               v-model="formData.address"
               style="text-transform: uppercase"
-              :disabled="isViewMode"
             />
             <span style="color: red"
               >House #, Street, Subdivision, Brgy, City/Municipality</span
@@ -278,11 +240,7 @@
             >Adolescent Matter<font color="red">*</font></label
           >
           <div class="col-sm-10">
-            <select
-              v-model="formData.adolescent"
-              class="form-control"
-              :disabled="isViewMode"
-            >
+            <select v-model="formData.adolescent" class="form-control">
               <option disabled value="">Select Adolescent Matter</option>
               <option value="No">No</option>
               <option value="Yes">Yes</option>
@@ -301,7 +259,6 @@
               style="text-transform: uppercase"
               v-model="formData.ethnicity"
               placeholder="Manobo,Badjao ETC"
-              :disabled="isViewMode"
             />
             <br />
           </div>
@@ -311,11 +268,7 @@
             >Disability<font color="red">*</font></label
           >
           <div class="col-sm-10">
-            <select
-              v-model="formData.disability"
-              class="form-control"
-              :disabled="isViewMode"
-            >
+            <select v-model="formData.disability" class="form-control">
               <option disabled value="">Select Disability</option>
               <option value="No">No</option>
               <option value="Yes">Yes</option>
@@ -338,7 +291,6 @@
               style="text-transform: uppercase"
               type="text"
               v-model="formData.nameofemergency"
-              :disabled="isViewMode"
             />
             <br />
           </div>
@@ -354,7 +306,6 @@
               type="text"
               v-model="formData.relationofemergency"
               placeholder="Father, Mother, Sister, etc"
-              :disabled="isViewMode"
             />
             <br />
           </div>
@@ -369,7 +320,6 @@
               type="number"
               v-model="formData.contactnoofemergency"
               @input="validatePhoneNumber"
-              :disabled="isViewMode"
             />
             <span v-if="invalidPhoneNumber" style="color: red"
               >Please enter a valid 11-digit phone number.</span
@@ -382,11 +332,7 @@
             >4p's Member?<font color="red">*</font></label
           >
           <div class="col-sm-10">
-            <select
-              v-model="formData.forpsno"
-              class="form-control"
-              :disabled="isViewMode"
-            >
+            <select v-model="formData.forpsno" class="form-control">
               <option disabled value="">Select 4'ps Member</option>
               <option value="NO">NO</option>
               <option value="YES">YES</option>
@@ -399,11 +345,7 @@
             >Philhealth Member?<font color="red">*</font></label
           >
           <div class="col-sm-10">
-            <select
-              v-model="formData.philhealth"
-              class="form-control"
-              :disabled="isViewMode"
-            >
+            <select v-model="formData.philhealth" class="form-control">
               <option disabled value="">Select Philhealth Member</option>
               <option value="NO">NO</option>
               <option value="YES">YES</option>
@@ -413,18 +355,11 @@
         </div>
       </div>
 
-      <!-- Buttons -->
+      <!-- Submit Button -->
       <div class="form-group row">
         <div class="col-sm-10 ml-sm-auto">
-          <button
-            v-if="isViewMode"
-            class="btn btn-primary"
-            @click="enableEditMode"
-          >
-            Edit
-          </button>
-          <button v-else class="btn btn-success" @click="updateProfile">
-            Update
+          <button class="btn btn-info" type="submit" @click="saveProfile">
+            Submit
           </button>
           <a :href="'/mswd/all-records'" class="btn btn-danger">Back</a>
         </div>
@@ -435,34 +370,35 @@
 
 <script>
 export default {
-  props: {
-    profile: {
-      type: Object,
-      required: true,
-    },
-  },
   data() {
     return {
-      formData: { ...this.profile }, // Initialize formData with profile data
+      bdate: "",
+      formData: {
+        lastname: "",
+        firstname: "",
+        middlename: "",
+        extension: "",
+        lgbt: "",
+        weightstatus: "",
+        childClassification: "",
+        typeofschool: "",
+        schoollevel: "",
+        nameofemergency: "",
+        relationofemergency: "",
+        contactnoofemergency: "",
+        forpsno: "",
+        gender: "",
+        barangay: "",
+        address: "",
+        adolescent: "",
+        ethnicity: "",
+        disability: "",
+        philhealth: "",
+      },
       invalidPhoneNumber: false,
-      isViewMode: true, // Set to true to disable all fields
     };
   },
   computed: {
-    age() {
-      if (!this.formData.birthdate) return null;
-      const birthDate = new Date(this.formData.birthdate);
-      const today = new Date();
-      const age = today.getFullYear() - birthDate.getFullYear();
-      const monthDifference = today.getMonth() - birthDate.getMonth();
-      if (
-        monthDifference < 0 ||
-        (monthDifference === 0 && today.getDate() < birthDate.getDate())
-      ) {
-        return age - 1;
-      }
-      return age;
-    },
     ageCategory() {
       if (this.age >= 0 && this.age <= 2) return "0-2";
       if (this.age >= 3 && this.age <= 4) return "3-4";
@@ -470,39 +406,77 @@ export default {
       if (this.age >= 13 && this.age <= 18) return "13-18";
       return "Invalid Age (18 Below Only)";
     },
+    age() {
+      if (!this.bdate) return null;
+      const birthDate = new Date(this.bdate);
+      const today = new Date();
+      const age = today.getFullYear() - birthDate.getFullYear();
+      const monthDifference = today.getMonth() - birthDate.getMonth();
+      if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+        return age - 1;
+      }
+      return age;
+    },
   },
   methods: {
     validatePhoneNumber() {
       const regex = /^\d{11}$/;
       this.invalidPhoneNumber = !regex.test(this.formData.contactnoofemergency);
     },
-    enableEditMode() {
-      this.isViewMode = false; // Enable editing
-      // Scroll to the top of the page
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    },
-    async updateProfile() {
-      try {
-        const response = await axios.put(
-          `/mswd/api/update/profile/${this.formData.id}`,
-          this.formData
-        );
-        Swal.fire({
-          title: "Profile Updated Successfully!",
-          icon: "success",
-          confirmButtonText: "Okay",
-        }).then(() => {
-          // Redirect to /mswd/all-records after the user clicks "Okay"
-          window.location.href = "/mswd/all-records";
-        });
-        this.isViewMode = true; // Switch back to view mode
-      } catch (error) {
+    saveProfile() {
+      if (this.age >= 19) {
         Swal.fire({
           icon: "error",
-          title: "Error",
-          text: "Failed to update profile. Please try again.",
+          title: "18 Below Only",
+          confirmButtonText: "Okay",
         });
+        return;
       }
+
+      const requiredFields = [
+        this.formData.lastname.trim(),
+        this.formData.firstname.trim(),
+        this.bdate.trim(),
+        this.formData.nameofemergency.trim(),
+        this.formData.relationofemergency.trim(),
+        this.formData.contactnoofemergency.trim(),
+        this.formData.forpsno.trim(),
+        this.formData.gender.trim(),
+        this.formData.barangay.trim(),
+        this.formData.address.trim(),
+        this.formData.ethnicity.trim(),
+        this.formData.disability.trim(),
+      ];
+
+      if (requiredFields.some(field => !field)) {
+        Swal.fire("Error", "Please fill out all required fields", "error");
+        return;
+      }
+
+      axios
+        .post("/mswd/api/store/profile", {
+          ...this.formData,
+          bdate: this.bdate,
+          age: this.age,
+          ageCategory: this.ageCategory,
+        })
+        .then(response => {
+          Swal.fire({
+            title: "New Profile Successfully Saved!",
+            icon: "success",
+            confirmButtonText: "Okay",
+          }).then(() => {
+            window.location.href = "/mswd/create/profile";
+          });
+        })
+        .catch(error => {
+          if (error.response && error.response.status === 422) {
+            Swal.fire({
+              icon: "error",
+              title: "Fill out Required Fields",
+            });
+          }
+        });
     },
   },
 };

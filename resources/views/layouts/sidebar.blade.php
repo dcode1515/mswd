@@ -11,6 +11,11 @@
                                 <i class="ri-dashboard-2-line"></i> <span data-key="t-widgets">Dashboard</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('create.profile')}}" class="nav-link menu-link" href="widgets.html">
+                                <i class="fas fa-user-plus"></i> <span data-key="t-widgets">Create Profile</span>
+                            </a>
+                        </li>
                         
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">

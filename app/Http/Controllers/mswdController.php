@@ -177,6 +177,7 @@ class mswdController extends Controller
       
 
          }               
+      
 
 
         
@@ -187,40 +188,10 @@ class mswdController extends Controller
         // $text = "MSWD";
         // $profileNo = Profile::IDGenerator(new Profile,'profile_no',5, $text.'-'.$now);
         
-        $profile = Profile::find($id);
-        //$profile->profile_no = $profileNo;
-        $profile->lastname = strtoupper($request->profileLastname,);
-        $profile->firstname = strtoupper($request->profileFirstname);
-        $profile->middlename = strtoupper($request->profileMiddlename);
-        $profile->extension = strtoupper($request->profileExtension);
-        $profile->birthdate = $request->profileBdate;
-        $profile->age = $request->profileAge;
-        $profile->ageCategory = $request->profileAgecategory;
-        $profile->lgbt = $request->profileLgbt;
-        $profile->weightstatus = $request->profileWeight;
-        $profile->childClassification = $request->profileClassification;
-        $profile->nameofschool = $request->profileNameofschool;
-        $profile->typeofschool = $request->profileInschool;
-        $profile->schoollevel = $request->schoollevel;
-        $profile->nameofemergency = strtoupper($request->profileNameofemergency);
-        $profile->relationofemergency = strtoupper($request->profileRelationofemergency);
-        $profile->contactnoofemergency = strtoupper($request->profileContactnoofemergency);
-        $profile->contactnoofemergency = strtoupper($request->profileBenefitstype);
-        $profile->disability = $request->profileDisability;
-        $profile->ethnicity = $request->profileEthnicity;
-        $profile->weightstatus= $request->weightstatus;
-        $profile->gender = $request->profileGender;
-        $profile->barangay = $request->profileBarangay;
-        $profile->address = $request->profileAddress;
-        $profile->adolescent = $request->adolescent;
-        $profile->benefitstype = $request->benefitstype;
-        $profile->forpsno = $request->forpsno;
-        $profile->philhealth = $request->philhealth;
-          $profile->philhealth_no = $request->philhealthno;
-        $profile->status = 'ACTIVE';
-        $profile->save();
-        return response()->json(['message','Profile Added!']);
-
+        $profile = Profile::findOrFail($id);
+        $profile->update($request->all());
+    
+        return response()->json(['message' => 'Profile updated successfully'], 200);
     }
     public function update_profile(Request $request,$id){
 
@@ -259,6 +230,7 @@ class mswdController extends Controller
         $profile->barangay = $request->profileBarangay;
         $profile->address = $request->profileAddress;
         $profile->benefitstype = $request->profileBenefitstype;
+        $profile->forpsno = $request->forpsno;
        
         $profile->save();
         return response()->json(['message','Profile Updated!']);
@@ -303,7 +275,8 @@ class mswdController extends Controller
                     ->orWhere('status', 'like', '%' . $search . '%');
             });
         })
-        ->orderBy('firstname', 'desc')
+        ->where('status', '=','Active')
+        ->orderBy('firstname', 'asc')
         ->paginate($perPage);
 
         return response()->json([
@@ -1676,4 +1649,11 @@ public function get_barangay_os(Request $request){
         Auth::logout(); // Log the user out
         return redirect('/'); // Redirect to the home page
     }
+
+    public function create_profile(){
+        return view('mswd.createprofile');
+    }
+   
+
+   
 }

@@ -25,13 +25,13 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/out-school-youth', [App\Http\Controllers\mswdController::class, 'os'])->name('os');
             Route::get('add/profile', [App\Http\Controllers\mswdController::class, 'profile_add']);
             Route::get('report', [App\Http\Controllers\mswdController::class, 'reporting'])->name('reporting');
-            Route::post('api/update/profile/{id}', [App\Http\Controllers\mswdController::class, 'update_mswd_profile'])->name('update.profile');
+            Route::put('api/update/profile/{id}', [App\Http\Controllers\mswdController::class, 'update_mswd_profile']);
             Route::get('view/profile/{id}', [App\Http\Controllers\mswdController::class, 'view_profile']);
             Route::get('api/get/data/mswd', [App\Http\Controllers\mswdController::class, 'get_mswd_profile']);
             Route::get('api/get/data/britania', [App\Http\Controllers\mswdController::class, 'get_barangay_profile_britania']);
             Route::get('api/get/data/is', [App\Http\Controllers\mswdController::class, 'get_barangay_is']);
             Route::get('api/get/data/os', [App\Http\Controllers\mswdController::class, 'get_barangay_os']);
-            Route::post('api/archive', [App\Http\Controllers\mswdController::class, 'archive'])->name('archive.profile');
+            Route::post('api/archive/{id}', [App\Http\Controllers\mswdController::class, 'archive'])->name('archive.profile');
             Route::get('edit/profile/{id}', [App\Http\Controllers\mswdController::class, 'edit']);
             //Route::post('api/update/profile/{id}', [App\Http\Controllers\mswdController::class, 'update_profile']);
             Route::get('/archived', [App\Http\Controllers\mswdController::class, 'archived'])->name('archive');
@@ -76,7 +76,9 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('api/get/data/age512', [App\Http\Controllers\mswdController::class, 'get_age512']);
             Route::get('api/get/data/age1318', [App\Http\Controllers\mswdController::class, 'get_age1318']);
             Route::get('api/get/data/archived', [App\Http\Controllers\mswdController::class, 'get_data_archived']);
-            
+            Route::get('create/profile', [App\Http\Controllers\mswdController::class, 'create_profile'])->name('create.profile');
+            Route::get('view/{id}', [App\Http\Controllers\mswdController::class, 'view_profile']);
+           
             
     });
 
