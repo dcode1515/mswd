@@ -599,48 +599,62 @@ public function get_barangay_os(Request $request){
 
                 public function get_barangay_gata(Request $request){
                         
-                    $columns = ['profile_no', 'name', 'bdate','age','gender', 'barangay', 'address'];
-                    $length = $request->input('length');
-                    $column = $request->input('column');
-                    $dir = $request->input('dir');
-                    $searchValue = $request->input('search');
-                    
-                    $data = Profile::where('status','=','ACTIVE')->where('barangay','=','GATA')->orderBy($columns[$column], $dir);
+                    try {
+                        $search = $request->query('search');
+                        $perPage = $request->query('per_page', 10);
+                        $perPage = max(1, min(100, $perPage)); // Validate per_page value
                 
-
-                    if($searchValue){
-                        $data->where(function($data) use ($searchValue) {
-                            $data->where('profile_no', 'like', '%' . $searchValue . '%')
-                            ->orWhere('lastname', 'like', '%' . $searchValue . '%')
-                            ->orWhere('firstname', 'like', '%' . $searchValue . '%')
-                            ->orWhere('middlename', 'like', '%' . $searchValue . '%')
-                            ->orWhere('extension', 'like', '%' . $searchValue . '%')
-                            ->orWhere('birthdate', 'like', '%' . $searchValue . '%')
-                            ->orWhere('ageCategory', 'like', '%' . $searchValue . '%')
-                            ->orWhere('age', 'like', '%' . $searchValue . '%')
-                            ->orWhere('lgbt', 'like', '%' . $searchValue . '%')
-                            ->orWhere('weightstatus', 'like', '%' . $searchValue . '%')
-                            ->orWhere('childClassification', 'like', '%' . $searchValue . '%')
-                            ->orWhere('nameofschool', 'like', '%' . $searchValue . '%')
-                            ->orWhere('typeofschool', 'like', '%' . $searchValue . '%')
-                            ->orWhere('schoollevel', 'like', '%' . $searchValue . '%')
-                            ->orWhere('nameofemergency', 'like', '%' . $searchValue . '%')
-                            ->orWhere('relationofemergency', 'like', '%' . $searchValue . '%')
-                            ->orWhere('contactnoofemergency', 'like', '%' . $searchValue . '%')
-                            ->orWhere('benefitstype', 'like', '%' . $searchValue . '%')
-                            ->orWhere('gender', 'like', '%' . $searchValue . '%')
-                            ->orWhere('barangay', 'like', '%' . $searchValue . '%')
-                            ->orWhere('address', 'like', '%' . $searchValue . '%')
-                            ->orWhere('ethnicity', 'like', '%' . $searchValue . '%')
-                            ->orWhere('disability', 'like', '%' . $searchValue . '%')
-                            ->orWhere('status', 'like', '%' . $searchValue . '%');
-                            
-                        });
-                        
-
+                        // Query profiles with optional search and pagination
+                        $profiles = Profile::when($search, function ($query, $search) {
+                            return $query->where(function ($q) use ($search) {
+                                $q->where('profile_no', 'like', '%' . $search . '%')
+                                    ->orWhere('lastname', 'like', '%' . $search . '%')
+                                    ->orWhere('firstname', 'like', '%' . $search . '%')
+                                    ->orWhere('middlename', 'like', '%' . $search . '%')
+                                    ->orWhere('extension', 'like', '%' . $search . '%')
+                                    ->orWhere('birthdate', 'like', '%' . $search . '%')
+                                    ->orWhere('ageCategory', 'like', '%' . $search . '%')
+                                    ->orWhere('age', 'like', '%' . $search . '%')
+                                    ->orWhere('lgbt', 'like', '%' . $search . '%')
+                                    ->orWhere('weightstatus', 'like', '%' . $search . '%')
+                                    ->orWhere('childClassification', 'like', '%' . $search . '%')
+                                    ->orWhere('nameofschool', 'like', '%' . $search . '%')
+                                    ->orWhere('typeofschool', 'like', '%' . $search . '%')
+                                    ->orWhere('schoollevel', 'like', '%' . $search . '%')
+                                    ->orWhere('nameofemergency', 'like', '%' . $search . '%')
+                                    ->orWhere('relationofemergency', 'like', '%' . $search . '%')
+                                    ->orWhere('contactnoofemergency', 'like', '%' . $search . '%')
+                                    ->orWhere('benefitstype', 'like', '%' . $search . '%')
+                                    ->orWhere('gender', 'like', '%' . $search . '%')
+                                    ->orWhere('barangay', 'like', '%' . $search . '%')
+                                    ->orWhere('address', 'like', '%' . $search . '%')
+                                    ->orWhere('ethnicity', 'like', '%' . $search . '%')
+                                    ->orWhere('disability', 'like', '%' . $search . '%')
+                                    ->orWhere('status', 'like', '%' . $search . '%');
+                            });
+                        })
+                        ->where('barangay','=','GATA')
+                        ->orderBy('firstname', 'desc')
+                        ->paginate($perPage);
+                
+                        return response()->json([
+                            'success' => true,
+                            'message' => 'Profiles retrieved successfully.',
+                            'data' => $profiles,
+                            'meta' => [
+                                'total' => $profiles->total(),
+                                'per_page' => $profiles->perPage(),
+                                'current_page' => $profiles->currentPage(),
+                                'last_page' => $profiles->lastPage(),
+                            ],
+                        ]);
+                    } catch (\Exception $e) {
+                        return response()->json([
+                            'success' => false,
+                            'message' => 'An error occurred while retrieving profiles.',
+                            'error' => $e->getMessage(),
+                        ], 500);
                     }
-                    $data = $data->paginate($length);
-                    return ['data' => $data, 'draw' => $request->input('draw')];
                 }
 
                 public function get_barangay_hornasan(Request $request){
@@ -888,48 +902,63 @@ public function get_barangay_os(Request $request){
 
                 public function get_barangay_poblacion(Request $request){
                         
-                    $columns = ['profile_no', 'name', 'bdate','age','gender', 'barangay', 'address'];
-                    $length = $request->input('length');
-                    $column = $request->input('column');
-                    $dir = $request->input('dir');
-                    $searchValue = $request->input('search');
-                    
-                    $data = Profile::where('status','=','ACTIVE')->where('barangay','=','POBLACION')->orderBy($columns[$column], $dir);
-                
-
-                    if($searchValue){
-                        $data->where(function($data) use ($searchValue) {
-                            $data->where('profile_no', 'like', '%' . $searchValue . '%')
-                            ->orWhere('lastname', 'like', '%' . $searchValue . '%')
-                            ->orWhere('firstname', 'like', '%' . $searchValue . '%')
-                            ->orWhere('middlename', 'like', '%' . $searchValue . '%')
-                            ->orWhere('extension', 'like', '%' . $searchValue . '%')
-                            ->orWhere('birthdate', 'like', '%' . $searchValue . '%')
-                            ->orWhere('ageCategory', 'like', '%' . $searchValue . '%')
-                            ->orWhere('age', 'like', '%' . $searchValue . '%')
-                            ->orWhere('lgbt', 'like', '%' . $searchValue . '%')
-                            ->orWhere('weightstatus', 'like', '%' . $searchValue . '%')
-                            ->orWhere('childClassification', 'like', '%' . $searchValue . '%')
-                            ->orWhere('nameofschool', 'like', '%' . $searchValue . '%')
-                            ->orWhere('typeofschool', 'like', '%' . $searchValue . '%')
-                            ->orWhere('schoollevel', 'like', '%' . $searchValue . '%')
-                            ->orWhere('nameofemergency', 'like', '%' . $searchValue . '%')
-                            ->orWhere('relationofemergency', 'like', '%' . $searchValue . '%')
-                            ->orWhere('contactnoofemergency', 'like', '%' . $searchValue . '%')
-                            ->orWhere('benefitstype', 'like', '%' . $searchValue . '%')
-                            ->orWhere('gender', 'like', '%' . $searchValue . '%')
-                            ->orWhere('barangay', 'like', '%' . $searchValue . '%')
-                            ->orWhere('address', 'like', '%' . $searchValue . '%')
-                            ->orWhere('ethnicity', 'like', '%' . $searchValue . '%')
-                            ->orWhere('disability', 'like', '%' . $searchValue . '%')
-                            ->orWhere('status', 'like', '%' . $searchValue . '%');
                             
-                        });
-                        
-
-                    }
-                    $data = $data->paginate($length);
-                    return ['data' => $data, 'draw' => $request->input('draw')];
+                    try {
+                        $search = $request->query('search');
+                        $perPage = $request->query('per_page', 10);
+                        $perPage = max(1, min(100, $perPage)); // Validate per_page value
+                
+                        // Query profiles with optional search and pagination
+                        $profiles = Profile::when($search, function ($query, $search) {
+                            return $query->where(function ($q) use ($search) {
+                                $q->where('profile_no', 'like', '%' . $search . '%')
+                                    ->orWhere('lastname', 'like', '%' . $search . '%')
+                                    ->orWhere('firstname', 'like', '%' . $search . '%')
+                                    ->orWhere('middlename', 'like', '%' . $search . '%')
+                                    ->orWhere('extension', 'like', '%' . $search . '%')
+                                    ->orWhere('birthdate', 'like', '%' . $search . '%')
+                                    ->orWhere('ageCategory', 'like', '%' . $search . '%')
+                                    ->orWhere('age', 'like', '%' . $search . '%')
+                                    ->orWhere('lgbt', 'like', '%' . $search . '%')
+                                    ->orWhere('weightstatus', 'like', '%' . $search . '%')
+                                    ->orWhere('childClassification', 'like', '%' . $search . '%')
+                                    ->orWhere('nameofschool', 'like', '%' . $search . '%')
+                                    ->orWhere('typeofschool', 'like', '%' . $search . '%')
+                                    ->orWhere('schoollevel', 'like', '%' . $search . '%')
+                                    ->orWhere('nameofemergency', 'like', '%' . $search . '%')
+                                    ->orWhere('relationofemergency', 'like', '%' . $search . '%')
+                                    ->orWhere('contactnoofemergency', 'like', '%' . $search . '%')
+                                    ->orWhere('benefitstype', 'like', '%' . $search . '%')
+                                    ->orWhere('gender', 'like', '%' . $search . '%')
+                                    ->orWhere('barangay', 'like', '%' . $search . '%')
+                                    ->orWhere('address', 'like', '%' . $search . '%')
+                                    ->orWhere('ethnicity', 'like', '%' . $search . '%')
+                                    ->orWhere('disability', 'like', '%' . $search . '%')
+                                    ->orWhere('status', 'like', '%' . $search . '%');
+                            });
+                        })
+                        ->where('barangay','=','POBLACION')
+                        ->orderBy('firstname', 'desc')
+                        ->paginate($perPage);
+                
+                        return response()->json([
+                            'success' => true,
+                            'message' => 'Profiles retrieved successfully.',
+                            'data' => $profiles,
+                            'meta' => [
+                                'total' => $profiles->total(),
+                                'per_page' => $profiles->perPage(),
+                                'current_page' => $profiles->currentPage(),
+                                'last_page' => $profiles->lastPage(),
+                            ],
+                        ]);
+                    } catch (\Exception $e) {
+                        return response()->json([
+                            'success' => false,
+                            'message' => 'An error occurred while retrieving profiles.',
+                            'error' => $e->getMessage(),
+                        ], 500);
+                }
                 }
 
                 public function get_barangay_pungtod(Request $request){
@@ -1533,94 +1562,53 @@ public function get_barangay_os(Request $request){
     
     
     public function filter_summary(Request $request)
-{
-    $category = $request->sel_type;
-    $barangay = $request->barangay;
-
-    $query = Profile::where('status', '=', 'Active');
-
-    // Handle "All" barangay option
-    if ($barangay !== "ALL") {
-        $query->where('barangay', '=', $barangay);
-    }
-
-    // Apply additional filters based on the selected category
-    if ($request->age_category) {
-        $choose = $request->age_category;
-        $query->where('ageCategory', '=', $request->age_category);
-    }
-    if ($request->agefilter) {
-        $choose = $request->agefilter;
-        $query->where('age', '=', $request->agefilter);
-    }
-    if ($request->gender) {
-        $choose = $request->gender;
-        $query->where('gender', '=', $request->gender);
-    }
-    if ($request->school_type) {
-        $choose = $request->school_type;
-        $query->where('childClassification', '=', $request->school_type);
-    }
-    if ($request->lgbt) {
-        $choose = $request->lgbt;
-        $query->where('lgbt', '=', $request->lgbt);
-    }
-    if ($request->weight_status) {
-        $choose = $request->weight_status;
-        $query->where('weightstatus', '=', $request->weight_status);
-    }
-
-    // Get the filtered results
-    $filter = $query->get();
-    $total = $filter->count();
-
-    // Generate the PDF
-    return PDF::loadView('mswd.pdf', compact('filter', 'total', 'barangay', 'category', 'choose'))
-        ->setPaper('Legal', 'Landscape')
-        ->stream('Generate Report.pdf');
-}
-
-    public function print(Request $request){
-
+    {
         $category = $request->sel_type;
-        $barangay  = $request->barangay;
-
-       
-
-        $query = Profile::where('status','=','Active')->get();
-        
-
-        if($request->age_category && $request->barangay){
+        $barangay = $request->barangay;
+    
+        $query = Profile::where('status', '=', 'Active');
+    
+        // Handle "All" barangay option
+        if ($barangay !== "ALL") {
+            $query->where('barangay', '=', $barangay);
+        }
+    
+        // Apply additional filters based on the selected category
+        if ($request->age_category) {
             $choose = $request->age_category;
-            $filter = $query->where('barangay','=',$request->barangay)->where('ageCategory','=',$request->age_category);
-            $total =  $query->where('barangay','=',$request->barangay)->where('ageCategory','=',$request->age_category)->count();
+            $query->where('ageCategory', '=', $request->age_category);
         }
-        
-        if($request->gender  && $request->barangay){
+        if ($request->agefilter) {
+            $choose = $request->agefilter;
+            $query->where('age', '=', $request->agefilter);
+        }
+        if ($request->gender) {
             $choose = $request->gender;
-            $filter = $query->where('barangay','=',$request->barangay)->where('gender','=',$request->gender);
-            $total =  $query->where('barangay','=',$request->barangay)->where('gender','=',$request->gender)->count();
+            $query->where('gender', '=', $request->gender);
         }
-        if($request->school_type  && $request->barangay){
+        if ($request->school_type) {
             $choose = $request->school_type;
-            $filter = $query->where('barangay','=',$request->barangay)->where('childClassification','=',$request->school_type);
-            $total =  $query->where('barangay','=',$request->barangay)->where('childClassification','=',$request->school_type)->count();
+            $query->where('childClassification', '=', $request->school_type);
         }
-        if($request->lgbt  && $request->barangay){
+        if ($request->lgbt) {
             $choose = $request->lgbt;
-            $filter = $query->where('barangay','=',$request->barangay)->where('lgbt','=',$request->lgbt);
-            $total =  $query->where('barangay','=',$request->barangay)->where('lgbt','=',$request->lgbt)->count();
+            $query->where('lgbt', '=', $request->lgbt);
         }
-        if($request->weight_status  && $request->barangay){
+        if ($request->weight_status) {
             $choose = $request->weight_status;
-            $filter = $query->where('barangay','=',$request->barangay)->where('weightstatus','=',$request->weight_status);
-            $total =  $query->where('barangay','=',$request->barangay)->where('weightstatus','=',$request->weight_status)->count();
+            $query->where('weightstatus', '=', $request->weight_status);
         }
-        return PDF::loadView('mswd.pdf',compact('filter','total','barangay','category','choose'))->setPaper('A4', 'Landscape')->stream('Generate Report.pdf');
-       
-       
-
+    
+        // Get the filtered results
+        $filter = $query->get();
+        $total = $filter->count();
+    
+        // Generate the PDF
+        return PDF::loadView('mswd.pdf', compact('filter', 'total', 'barangay', 'category', 'choose'))
+            ->setPaper('Legal', 'Landscape')
+            ->stream('Generate Report.pdf');
     }
+    
 
 
     public function regsiter_profile(){

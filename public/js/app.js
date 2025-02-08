@@ -5531,145 +5531,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -5701,6 +5562,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
+    getPagesToShow: function getPagesToShow() {
+      var start = 1;
+      var end = Math.min(10, this.profiles.last_page);
+
+      // If the current page is greater than 10, shift the visible pages
+      if (this.profiles.current_page > 10) {
+        start = this.profiles.current_page - 9; // Show 10 pages centered around the current page
+        end = this.profiles.current_page;
+      }
+
+      // Return the array of page numbers to display
+      return Array.from({
+        length: end - start + 1
+      }, function (_, i) {
+        return i + start;
+      });
+    },
     archiveProfile: function archiveProfile(id) {
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         var confirmArchive, response;
@@ -6352,146 +6230,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -6523,6 +6261,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
+    getPagesToShow: function getPagesToShow() {
+      var start = 1;
+      var end = Math.min(10, this.profiles.last_page);
+
+      // If the current page is greater than 10, shift the visible pages
+      if (this.profiles.current_page > 10) {
+        start = this.profiles.current_page - 9; // Show 10 pages centered around the current page
+        end = this.profiles.current_page;
+      }
+
+      // Return the array of page numbers to display
+      return Array.from({
+        length: end - start + 1
+      }, function (_, i) {
+        return i + start;
+      });
+    },
     getDataProfile: function getDataProfile() {
       var _this = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -6598,149 +6353,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -7067,12 +6679,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -7893,12 +7499,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -8005,149 +7605,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -8831,12 +8288,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -8943,12 +8394,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -10523,8 +9968,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Datatable_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Datatable.vue */ "./resources/js/components/Datatable.vue");
-/* harmony import */ var _Pagination_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pagination.vue */ "./resources/js/components/Pagination.vue");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 //
 //
 //
@@ -10745,354 +10197,87 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    datatable: _Datatable_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    pagination: _Pagination_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  data: function data() {
+    return {
+      profiles: {
+        data: [],
+        current_page: 1,
+        last_page: 1,
+        per_page: 10,
+        total: 0
+      },
+      formData: {
+        profile_no: "",
+        firstname: "",
+        middlename: "",
+        lastname: "",
+        birthdate: "",
+        gender: "",
+        barangay: "",
+        childClassification: "",
+        inschool: "",
+        schoollevel: "",
+        disability: "",
+        forpsno: "",
+        status: ""
+      },
+      perPage: 10,
+      searchQuery: ""
+    };
   },
   methods: {
-    archive: function archive(id) {
-      Swal.fire({
-        title: "Are you sure want to Archive this Record?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, Archive it!"
-      }).then(function (result) {
-        if (result.isConfirmed) {
-          axios.post("/mswd/api/archive/".concat(id)).then(function (response) {});
-          Swal.fire("Success!", "Record has been Archived.", "success").then(function () {
-            window.location.href = "/mswd/all-records";
-          });
-        }
-      });
-      console.log(id);
-    },
-    getData: function getData() {
+    getDataProfile: function getDataProfile() {
       var _this = this;
-      var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "/mswd/api/get/data/gata";
-      this.tableData.draw++;
-      axios.get(url, {
-        params: this.tableData
-      }).then(function (response) {
-        var data = response.data;
-        if (_this.tableData.draw == data.draw) {
-          _this.data = data.data.data;
-          _this.configPagination(data.data);
-        }
-      })["catch"](function (errors) {
-        console.log(errors);
-      });
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var response;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return axios.get("/mswd/api/get/data/gata", {
+                params: {
+                  page: _this.profiles.current_page,
+                  per_page: _this.perPage,
+                  search: _this.searchQuery
+                }
+              });
+            case 3:
+              response = _context.sent;
+              _this.profiles = response.data.data;
+              _context.next = 10;
+              break;
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](0);
+              console.error("Error fetching Profile data:", _context.t0);
+            case 10:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
     },
-    configPagination: function configPagination(data) {
-      this.pagination.lastPage = data.last_page;
-      this.pagination.currentPage = data.current_page;
-      this.pagination.total = data.total;
-      this.pagination.lastPageUrl = data.last_page_url;
-      this.pagination.nextPageUrl = data.next_page_url;
-      this.pagination.prevPageUrl = data.prev_page_url;
-      this.pagination.from = data.from;
-      this.pagination.to = data.to;
+    viewProfile: function viewProfile(profile) {
+      // Populate formData with the selected profile's data
+      this.formData = _objectSpread({}, profile);
+      // Open the modal
+      new bootstrap.Modal(document.getElementById("viewProfileModal")).show();
     },
-    sortBy: function sortBy(key) {
-      this.sortKey = key;
-      this.sortOrders[key] = this.sortOrders[key] * -1;
-      this.tableData.column = this.getIndex(this.columns, "name", key);
-      this.tableData.dir = this.sortOrders[key] === 1 ? "asc" : "desc";
-      this.getData();
-    },
-    getIndex: function getIndex(array, key, value) {
-      return array.findIndex(function (i) {
-        return i[key] == value;
-      });
+    changePage: function changePage(page) {
+      if (page >= 1 && page <= this.profiles.last_page) {
+        this.profiles.current_page = page;
+        this.getDataProfile();
+      }
     }
+  },
+  created: function created() {
+    this.getDataProfile();
   },
   mounted: function mounted() {
     console.log("Component Mounted");
-    this.getData();
-  },
-  data: function data() {
-    var sortOrders = {};
-    var columns = [{
-      width: "8%",
-      label: "PROFILE NO",
-      name: "profile_no"
-    }, {
-      width: "15",
-      label: "NAME",
-      no: "name"
-    }, {
-      width: "7%",
-      label: "BIRTHDATE",
-      name: "bdate"
-    }, {
-      width: "9%",
-      label: "AGE CATEGORY",
-      name: "ageCategry"
-    }, {
-      width: "8%",
-      label: "GENDER",
-      name: "Gender"
-    }, {
-      width: "12%",
-      label: "BARANGAY",
-      name: "barangay"
-    }, {
-      width: "20%",
-      label: "ADDRESS",
-      name: "address"
-    }, {
-      width: "5%",
-      label: "STATUS",
-      name: "status"
-    }, {
-      width: "15%",
-      label: "ACTION",
-      name: "action"
-    }];
-    columns.forEach(function (column) {
-      sortOrders[column.name] = -1;
-    });
-    return {
-      page: 10,
-      data: [],
-      length: 10,
-      search: "",
-      assign: [],
-      selected_user: [],
-      current_page: [],
-      error: "",
-      columns: columns,
-      sortKey: "lastname",
-      sortOrders: sortOrders,
-      perPage: ["10", "20", "30"],
-      tableData: {
-        draw: 0,
-        length: 10,
-        search: "",
-        column: 0,
-        dir: "asc"
-      },
-      pagination: {
-        lastPage: "",
-        currentPage: "",
-        total: "",
-        lastPageUrl: "",
-        nextPageUrl: "",
-        prevPageUrl: "",
-        from: "",
-        to: ""
-      }
-    };
   }
 });
 
@@ -11118,12 +10303,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -11944,12 +11123,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -12056,12 +11229,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -12882,12 +12049,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -12994,12 +12155,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -13820,12 +12975,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -13997,8 +13146,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Datatable_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Datatable.vue */ "./resources/js/components/Datatable.vue");
-/* harmony import */ var _Pagination_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pagination.vue */ "./resources/js/components/Pagination.vue");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 //
 //
 //
@@ -14356,196 +13512,87 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    datatable: _Datatable_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    pagination: _Pagination_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  data: function data() {
+    return {
+      profiles: {
+        data: [],
+        current_page: 1,
+        last_page: 1,
+        per_page: 10,
+        total: 0
+      },
+      formData: {
+        profile_no: "",
+        firstname: "",
+        middlename: "",
+        lastname: "",
+        birthdate: "",
+        gender: "",
+        barangay: "",
+        childClassification: "",
+        inschool: "",
+        schoollevel: "",
+        disability: "",
+        forpsno: "",
+        status: ""
+      },
+      perPage: 10,
+      searchQuery: ""
+    };
   },
   methods: {
-    archive: function archive(id) {
-      Swal.fire({
-        title: "Are you sure want to Archive this Record?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, Archive it!"
-      }).then(function (result) {
-        if (result.isConfirmed) {
-          axios.post("/mswd/api/archive/".concat(id)).then(function (response) {});
-          Swal.fire("Success!", "Record has been Archived.", "success").then(function () {
-            window.location.href = "/mswd/all-records";
-          });
-        }
-      });
-      console.log(id);
-    },
-    getData: function getData() {
+    getDataProfile: function getDataProfile() {
       var _this = this;
-      var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "/mswd/api/get/data/poblacion";
-      this.tableData.draw++;
-      axios.get(url, {
-        params: this.tableData
-      }).then(function (response) {
-        var data = response.data;
-        if (_this.tableData.draw == data.draw) {
-          _this.data = data.data.data;
-          _this.configPagination(data.data);
-        }
-      })["catch"](function (errors) {
-        console.log(errors);
-      });
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var response;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return axios.get("/mswd/api/get/data/poblacion", {
+                params: {
+                  page: _this.profiles.current_page,
+                  per_page: _this.perPage,
+                  search: _this.searchQuery
+                }
+              });
+            case 3:
+              response = _context.sent;
+              _this.profiles = response.data.data;
+              _context.next = 10;
+              break;
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](0);
+              console.error("Error fetching Profile data:", _context.t0);
+            case 10:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
     },
-    configPagination: function configPagination(data) {
-      this.pagination.lastPage = data.last_page;
-      this.pagination.currentPage = data.current_page;
-      this.pagination.total = data.total;
-      this.pagination.lastPageUrl = data.last_page_url;
-      this.pagination.nextPageUrl = data.next_page_url;
-      this.pagination.prevPageUrl = data.prev_page_url;
-      this.pagination.from = data.from;
-      this.pagination.to = data.to;
+    viewProfile: function viewProfile(profile) {
+      // Populate formData with the selected profile's data
+      this.formData = _objectSpread({}, profile);
+      // Open the modal
+      new bootstrap.Modal(document.getElementById("viewProfileModal")).show();
     },
-    sortBy: function sortBy(key) {
-      this.sortKey = key;
-      this.sortOrders[key] = this.sortOrders[key] * -1;
-      this.tableData.column = this.getIndex(this.columns, "name", key);
-      this.tableData.dir = this.sortOrders[key] === 1 ? "asc" : "desc";
-      this.getData();
-    },
-    getIndex: function getIndex(array, key, value) {
-      return array.findIndex(function (i) {
-        return i[key] == value;
-      });
+    changePage: function changePage(page) {
+      if (page >= 1 && page <= this.profiles.last_page) {
+        this.profiles.current_page = page;
+        this.getDataProfile();
+      }
     }
+  },
+  created: function created() {
+    this.getDataProfile();
   },
   mounted: function mounted() {
     console.log("Component Mounted");
-    this.getData();
-  },
-  data: function data() {
-    var sortOrders = {};
-    var columns = [{
-      width: "8%",
-      label: "PROFILE NO",
-      name: "profile_no"
-    }, {
-      width: "15",
-      label: "NAME",
-      no: "name"
-    }, {
-      width: "7%",
-      label: "BIRTHDATE",
-      name: "bdate"
-    }, {
-      width: "9%",
-      label: "AGE CATEGORY",
-      name: "ageCategry"
-    }, {
-      width: "8%",
-      label: "GENDER",
-      name: "Gender"
-    }, {
-      width: "12%",
-      label: "BARANGAY",
-      name: "barangay"
-    }, {
-      width: "20%",
-      label: "ADDRESS",
-      name: "address"
-    }, {
-      width: "5%",
-      label: "STATUS",
-      name: "status"
-    }, {
-      width: "15%",
-      label: "ACTION",
-      name: "action"
-    }];
-    columns.forEach(function (column) {
-      sortOrders[column.name] = -1;
-    });
-    return {
-      page: 10,
-      data: [],
-      length: 10,
-      search: "",
-      assign: [],
-      selected_user: [],
-      current_page: [],
-      error: "",
-      columns: columns,
-      sortKey: "lastname",
-      sortOrders: sortOrders,
-      perPage: ["10", "20", "30"],
-      tableData: {
-        draw: 0,
-        length: 10,
-        search: "",
-        column: 0,
-        dir: "asc"
-      },
-      pagination: {
-        lastPage: "",
-        currentPage: "",
-        total: "",
-        lastPageUrl: "",
-        nextPageUrl: "",
-        prevPageUrl: "",
-        from: "",
-        to: ""
-      }
-    };
   }
 });
 
@@ -14571,12 +13618,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -15429,12 +14470,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -16918,12 +15953,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -17030,12 +16059,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -23668,7 +22691,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ntd[data-v-45e60832] {\r\n  text-transform: uppercase;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.centered[data-v-45e60832] {\r\n  text-align: center;\n}\n.pdf-icon[data-v-45e60832] {\r\n  font-size: 18px;\r\n  margin-right: 8px;\n}\n.print-icon[data-v-45e60832] {\r\n  font-size: 18px;\r\n  margin-right: 8px;\n}\n.icon[data-v-45e60832] {\r\n  font-size: 18px;\r\n  margin-right: 8px;\n}\n.custom-modal-size[data-v-45e60832] {\r\n  max-width: 1200px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -23836,7 +22859,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\ntd[data-v-88a5c93c] {\r\n  text-transform: uppercase;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.centered[data-v-88a5c93c] {\r\n  text-align: center;\n}\n.pdf-icon[data-v-88a5c93c] {\r\n  font-size: 18px;\r\n  margin-right: 8px;\n}\n.print-icon[data-v-88a5c93c] {\r\n  font-size: 18px;\r\n  margin-right: 8px;\n}\n.icon[data-v-88a5c93c] {\r\n  font-size: 18px;\r\n  margin-right: 8px;\n}\n.custom-modal-size[data-v-88a5c93c] {\r\n  max-width: 1200px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -45120,6 +44143,10 @@ var render = function () {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.forpsno))]),
                       _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
+                      _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
                       _c("td", [
@@ -45189,7 +44216,7 @@ var render = function () {
                           ]
                         ),
                         _vm._v(" "),
-                        _vm._l(_vm.profiles.last_page, function (page) {
+                        _vm._l(_vm.getPagesToShow(), function (page) {
                           return _c(
                             "li",
                             {
@@ -45795,6 +44822,10 @@ var staticRenderFns = [
         _c("th", [_vm._v("School Level")]),
         _vm._v(" "),
         _c("th", [_vm._v("4ps Member")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
         _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
@@ -46427,6 +45458,10 @@ var render = function () {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.forpsno))]),
                       _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
+                      _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
                       _c("td", [
@@ -46496,7 +45531,7 @@ var render = function () {
                           ]
                         ),
                         _vm._v(" "),
-                        _vm._l(_vm.profiles.last_page, function (page) {
+                        _vm._l(_vm.getPagesToShow(), function (page) {
                           return _c(
                             "li",
                             {
@@ -47103,6 +46138,10 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("4ps Member")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")]),
@@ -47321,6 +46360,10 @@ var render = function () {
                       _c("td", [_vm._v(_vm._s(profile.schoollevel))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.forpsno))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
@@ -47998,6 +47041,10 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("4ps Member")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")]),
@@ -48216,6 +47263,10 @@ var render = function () {
                       _c("td", [_vm._v(_vm._s(profile.schoollevel))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.forpsno))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
@@ -48893,6 +47944,10 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("4ps Member")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")]),
@@ -49111,6 +48166,10 @@ var render = function () {
                       _c("td", [_vm._v(_vm._s(profile.schoollevel))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.forpsno))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
@@ -49788,6 +48847,10 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("4ps Member")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")]),
@@ -50006,6 +49069,10 @@ var render = function () {
                       _c("td", [_vm._v(_vm._s(profile.schoollevel))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.forpsno))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
@@ -50683,6 +49750,10 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("4ps Member")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")]),
@@ -50901,6 +49972,10 @@ var render = function () {
                       _c("td", [_vm._v(_vm._s(profile.schoollevel))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.forpsno))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
@@ -51578,6 +50653,10 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("4ps Member")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")]),
@@ -51796,6 +50875,10 @@ var render = function () {
                       _c("td", [_vm._v(_vm._s(profile.schoollevel))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.forpsno))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
@@ -52472,6 +51555,10 @@ var staticRenderFns = [
         _c("th", [_vm._v("School Level")]),
         _vm._v(" "),
         _c("th", [_vm._v("4ps Member")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
         _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
@@ -55054,1387 +54141,887 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-xl-12" }, [
-      _c("div", { staticClass: "ibox-body" }, [
-        _c("div", { staticClass: "ibox" }, [
-          _c("div", { staticClass: "ibox-body" }, [
-            _c(
-              "a",
-              {
-                staticClass: "btn btn-danger",
-                attrs: { href: "/mswd/home", target: "_blank" },
-              },
-              [_vm._v("Back to Dashboard")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "control float-right" }, [
-              _c("br"),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.tableData.search,
-                      expression: "tableData.search",
-                    },
-                  ],
-                  staticClass: "input form-control",
-                  attrs: { type: "text", placeholder: "Search" },
-                  domProps: { value: _vm.tableData.search },
-                  on: {
-                    input: [
-                      function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.tableData, "search", $event.target.value)
-                      },
-                      function ($event) {
-                        return _vm.getData()
-                      },
-                    ],
-                  },
-                }),
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c("div", { staticClass: "card", attrs: { id: "invoiceList" } }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "card-body bg-light-subtle border border-dashed border-start-0 border-end-0",
+            },
+            [
+              _c("form", [
+                _c("div", { staticClass: "row g-3" }, [
+                  _c("div", { staticClass: "col-xxl-5 col-sm-12" }, [
+                    _c("div", { staticClass: "search-box" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.searchQuery,
+                            expression: "searchQuery",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text", placeholder: "Search..." },
+                        domProps: { value: _vm.searchQuery },
+                        on: {
+                          input: [
+                            function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.searchQuery = $event.target.value
+                            },
+                            _vm.getDataProfile,
+                          ],
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c("i", { staticClass: "ri-search-line search-icon" }),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-xxl-3 col-sm-4" }, [
+                    _c("div", { staticClass: "input-light" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.perPage,
+                              expression: "perPage",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: [
+                              function ($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function (o) {
+                                    return o.selected
+                                  })
+                                  .map(function (o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.perPage = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              },
+                              _vm.getDataProfile,
+                            ],
+                          },
+                        },
+                        [
+                          _c("option", { attrs: { value: "10" } }, [
+                            _vm._v("10 per page"),
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "20" } }, [
+                            _vm._v("20 per page"),
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "50" } }, [
+                            _vm._v("50 per page"),
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "100" } }, [
+                            _vm._v("100 per page"),
+                          ]),
+                        ]
+                      ),
+                    ]),
+                  ]),
+                ]),
               ]),
-            ]),
-            _vm._v(" "),
-            _c("br"),
-            _c("br"),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "table-responsive" },
-              [
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table table-bordered" }, [
+                _vm._m(1),
+                _vm._v(" "),
                 _c(
-                  "datatable",
-                  {
-                    attrs: {
-                      columns: _vm.columns,
-                      sortKey: _vm.sortKey,
-                      sortOrders: _vm.sortOrders,
-                    },
-                    on: { sort: _vm.sortBy },
-                  },
-                  [
+                  "tbody",
+                  _vm._l(_vm.profiles.data, function (profile, index) {
+                    return _c("tr", { key: profile.id }, [
+                      _c("td", [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(
+                              (_vm.profiles.current_page - 1) *
+                                _vm.profiles.per_page +
+                                index +
+                                1
+                            ) +
+                            "\n                  "
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.profile_no))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(profile.firstname) +
+                            " " +
+                            _vm._s(profile.middlename) +
+                            ",\n                    " +
+                            _vm._s(profile.lastname) +
+                            "\n                  "
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.birthdate))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.gender))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.barangay))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.childClassification))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.disability))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.schoollevel))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.forpsno))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.status))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-sm btn-primary",
+                            attrs: {
+                              href: "/mswd/view/" + profile.id,
+                              title: "View",
+                            },
+                          },
+                          [_c("i", { staticClass: "fas fa-eye" })]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-sm btn-danger ml-2",
+                            attrs: { title: "Delete" },
+                            on: {
+                              click: function ($event) {
+                                return _vm.archiveProfile(profile.id)
+                              },
+                            },
+                          },
+                          [_c("i", { staticClass: "fas fa-trash" })]
+                        ),
+                      ]),
+                    ])
+                  }),
+                  0
+                ),
+              ]),
+              _vm._v(" "),
+              _vm.profiles.total > _vm.profiles.per_page
+                ? _c("nav", [
                     _c(
-                      "tbody",
-                      _vm._l(_vm.data, function (data) {
-                        return _c("tr", { key: data.id }, [
-                          _c("td", [_vm._v(_vm._s(data.profile_no))]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              "\n                    " +
-                                _vm._s(data.lastname) +
-                                "," +
-                                _vm._s(data.firstname) +
-                                "\n                    " +
-                                _vm._s(data.middlename) +
-                                " " +
-                                _vm._s(data.extension) +
-                                "\n                  "
-                            ),
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              "\n                    " + _vm._s(data.birthdate)
-                            ),
-                            _c("br"),
-                            _vm._v(" "),
-                            _c("b", [_vm._v("Age:")]),
-                            _vm._v(
-                              " " + _vm._s(data.age) + "\n                  "
-                            ),
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(data.ageCategory))]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(data.gender))]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(data.barangay))]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(data.address))]),
-                          _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(data.status))]),
-                          _vm._v(" "),
-                          _c("td", [
+                      "ul",
+                      { staticClass: "pagination justify-content-end" },
+                      [
+                        _c(
+                          "li",
+                          {
+                            staticClass: "page-item",
+                            class: {
+                              disabled: _vm.profiles.current_page === 1,
+                            },
+                          },
+                          [
                             _c(
                               "a",
                               {
-                                staticClass: "btn btn-danger",
-                                attrs: {
-                                  href: "/mswd/view/profile/" + data.id,
+                                staticClass: "page-link",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function ($event) {
+                                    $event.preventDefault()
+                                    return _vm.changePage(
+                                      _vm.profiles.current_page - 1
+                                    )
+                                  },
                                 },
                               },
-                              [_vm._v("View")]
+                              [_c("i", { staticClass: "fas fa-chevron-left" })]
                             ),
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.profiles.last_page, function (page) {
+                          return _c(
+                            "li",
                             {
-                              staticClass: "modal fade modal-bookmark",
-                              attrs: {
-                                id: "exampleModal" + data.id,
-                                tabindex: "-1",
-                                role: "dialog",
-                                "aria-labelledby": "exampleModalLabel",
-                                "aria-hidden": "true",
+                              key: page,
+                              staticClass: "page-item",
+                              class: {
+                                active: page === _vm.profiles.current_page,
                               },
                             },
                             [
                               _c(
-                                "div",
+                                "a",
                                 {
-                                  staticClass: "modal-dialog modal-lg",
-                                  attrs: { role: "document" },
+                                  staticClass: "page-link",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function ($event) {
+                                      $event.preventDefault()
+                                      return _vm.changePage(page)
+                                    },
+                                  },
                                 },
-                                [
-                                  _c("div", { staticClass: "modal-content" }, [
-                                    _c("div", { staticClass: "modal-header" }, [
-                                      _c(
-                                        "h5",
-                                        {
-                                          staticClass: "modal-title",
-                                          attrs: { id: "exampleModalLabel" },
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                            Profile #: " +
-                                              _vm._s(data.profile_no) +
-                                              "\n                          "
-                                          ),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("button", {
-                                        staticClass: "btn-close",
-                                        attrs: {
-                                          type: "button",
-                                          "data-bs-dismiss": "modal",
-                                          "aria-label": "Close",
-                                        },
-                                      }),
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "modal-body" }, [
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-row" },
-                                        [
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-3",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("Lastname")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("input", {
-                                                staticClass: "form-control",
-                                                attrs: {
-                                                  id: "task-title",
-                                                  type: "text",
-                                                  required: "",
-                                                  autocomplete: "off",
-                                                },
-                                                domProps: {
-                                                  value: data.lastname,
-                                                },
-                                              }),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-3",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("Firstname")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("input", {
-                                                staticClass: "form-control",
-                                                attrs: {
-                                                  id: "task-title",
-                                                  type: "text",
-                                                  required: "",
-                                                  autocomplete: "off",
-                                                },
-                                                domProps: {
-                                                  value: data.firstname,
-                                                },
-                                              }),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-3",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("Middlename")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("input", {
-                                                staticClass: "form-control",
-                                                attrs: {
-                                                  id: "task-title",
-                                                  type: "text",
-                                                  required: "",
-                                                  autocomplete: "off",
-                                                },
-                                                domProps: {
-                                                  value: data.middlename,
-                                                },
-                                              }),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-3",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("Extension")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("input", {
-                                                staticClass: "form-control",
-                                                attrs: {
-                                                  id: "task-title",
-                                                  type: "text",
-                                                  required: "",
-                                                  autocomplete: "off",
-                                                },
-                                                domProps: {
-                                                  value: data.extension,
-                                                },
-                                              }),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-3",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("Gender")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "select",
-                                                {
-                                                  staticClass: "form-control",
-                                                  domProps: {
-                                                    value: data.gender,
-                                                  },
-                                                },
-                                                [
-                                                  _c(
-                                                    "option",
-                                                    {
-                                                      attrs: { value: "Male" },
-                                                    },
-                                                    [_vm._v("Male")]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "option",
-                                                    {
-                                                      attrs: {
-                                                        value: "Female",
-                                                      },
-                                                    },
-                                                    [_vm._v("Female")]
-                                                  ),
-                                                ]
-                                              ),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-3",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("Birthdate")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("input", {
-                                                staticClass: "form-control",
-                                                attrs: {
-                                                  id: "task-title",
-                                                  type: "date",
-                                                  required: "",
-                                                  autocomplete: "off",
-                                                },
-                                                domProps: {
-                                                  value: data.birthdate,
-                                                },
-                                              }),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-3",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("Age")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("input", {
-                                                staticClass: "form-control",
-                                                attrs: {
-                                                  id: "task-title",
-                                                  type: "text",
-                                                  disabled: "",
-                                                },
-                                                domProps: { value: data.age },
-                                              }),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-3",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("Age Category")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("input", {
-                                                staticClass: "form-control",
-                                                attrs: {
-                                                  id: "task-title",
-                                                  type: "text",
-                                                  disabled: "",
-                                                },
-                                                domProps: {
-                                                  value: data.ageCategory,
-                                                },
-                                              }),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          data.ageCategory == "13-18"
-                                            ? [
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "form-group col-md-12",
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "label",
-                                                      {
-                                                        attrs: {
-                                                          for: "task-title",
-                                                        },
-                                                      },
-                                                      [_vm._v("LGBT")]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c("input", {
-                                                      staticClass:
-                                                        "form-control",
-                                                      attrs: {
-                                                        id: "task-title",
-                                                        type: "text",
-                                                        disabled: "",
-                                                      },
-                                                      domProps: {
-                                                        value: data.ageCategory,
-                                                      },
-                                                    }),
-                                                  ]
-                                                ),
-                                              ]
-                                            : _vm._e(),
-                                          _vm._v(" "),
-                                          data.ageCategory == "5-12" ||
-                                          data.ageCategory == "0-2" ||
-                                          data.ageCategory == "3-4"
-                                            ? [
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "form-group col-md-12",
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "label",
-                                                      {
-                                                        attrs: {
-                                                          for: "task-title",
-                                                        },
-                                                      },
-                                                      [_vm._v("Weight Status")]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "select",
-                                                      {
-                                                        staticClass:
-                                                          "form-control",
-                                                        domProps: {
-                                                          value:
-                                                            data.weightstatus,
-                                                        },
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "option",
-                                                          {
-                                                            attrs: {
-                                                              value: "Obese",
-                                                            },
-                                                          },
-                                                          [_vm._v("Obese")]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "option",
-                                                          {
-                                                            attrs: {
-                                                              value: "Stunted",
-                                                            },
-                                                          },
-                                                          [_vm._v("Stunted")]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "option",
-                                                          {
-                                                            attrs: {
-                                                              value: "Stunted",
-                                                            },
-                                                          },
-                                                          [_vm._v("Wasted")]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "option",
-                                                          {
-                                                            attrs: {
-                                                              value:
-                                                                "Overweight",
-                                                            },
-                                                          },
-                                                          [
-                                                            _vm._v(
-                                                              "\n                                    Overweight\n                                  "
-                                                            ),
-                                                          ]
-                                                        ),
-                                                      ]
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            : _vm._e(),
-                                          _vm._v(" "),
-                                          data.ageCategory == "5-12" ||
-                                          data.ageCategory == "13-18"
-                                            ? [
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "form-group col-md-3",
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "label",
-                                                      {
-                                                        attrs: {
-                                                          for: "task-title",
-                                                        },
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "Child Classification"
-                                                        ),
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "select",
-                                                      {
-                                                        staticClass:
-                                                          "form-control",
-                                                        domProps: {
-                                                          value:
-                                                            data.childClassification,
-                                                        },
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "option",
-                                                          {
-                                                            attrs: {
-                                                              disabled: "",
-                                                              value: "",
-                                                            },
-                                                          },
-                                                          [
-                                                            _vm._v(
-                                                              "\n                                    Select Child Classification\n                                  "
-                                                            ),
-                                                          ]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "option",
-                                                          {
-                                                            attrs: {
-                                                              value:
-                                                                "In School Youth",
-                                                            },
-                                                          },
-                                                          [
-                                                            _vm._v(
-                                                              "\n                                    In School Youth\n                                  "
-                                                            ),
-                                                          ]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "option",
-                                                          {
-                                                            attrs: {
-                                                              value:
-                                                                "Out of School Youth",
-                                                            },
-                                                          },
-                                                          [
-                                                            _vm._v(
-                                                              "\n                                    Out of School Youth\n                                  "
-                                                            ),
-                                                          ]
-                                                        ),
-                                                      ]
-                                                    ),
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "form-group col-md-3",
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "label",
-                                                      {
-                                                        attrs: {
-                                                          for: "task-title",
-                                                        },
-                                                      },
-                                                      [_vm._v("Type of School")]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "select",
-                                                      {
-                                                        staticClass:
-                                                          "form-control",
-                                                        domProps: {
-                                                          value:
-                                                            data.typeofschool,
-                                                        },
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "option",
-                                                          {
-                                                            attrs: {
-                                                              disabled: "",
-                                                              value: "",
-                                                            },
-                                                          },
-                                                          [
-                                                            _vm._v(
-                                                              "\n                                    Select Name of School\n                                  "
-                                                            ),
-                                                          ]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "option",
-                                                          {
-                                                            attrs: {
-                                                              value: "Private",
-                                                            },
-                                                          },
-                                                          [_vm._v("Private")]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "option",
-                                                          {
-                                                            attrs: {
-                                                              value: "Public",
-                                                            },
-                                                          },
-                                                          [_vm._v("Public")]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "option",
-                                                          {
-                                                            attrs: {
-                                                              value: "ALS",
-                                                            },
-                                                          },
-                                                          [_vm._v("ALS")]
-                                                        ),
-                                                      ]
-                                                    ),
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "form-group col-md-3",
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "label",
-                                                      {
-                                                        attrs: {
-                                                          for: "task-title",
-                                                        },
-                                                      },
-                                                      [_vm._v("School Level")]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "select",
-                                                      {
-                                                        staticClass:
-                                                          "form-control",
-                                                        domProps: {
-                                                          value:
-                                                            data.schoollevel,
-                                                        },
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "option",
-                                                          {
-                                                            attrs: {
-                                                              value: "Day Care",
-                                                            },
-                                                          },
-                                                          [_vm._v("Day Care")]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "option",
-                                                          {
-                                                            attrs: {
-                                                              value:
-                                                                "Elementary",
-                                                            },
-                                                          },
-                                                          [
-                                                            _vm._v(
-                                                              "\n                                    Elementary\n                                  "
-                                                            ),
-                                                          ]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "option",
-                                                          {
-                                                            attrs: {
-                                                              value:
-                                                                "High School",
-                                                            },
-                                                          },
-                                                          [
-                                                            _vm._v(
-                                                              "\n                                    High School\n                                  "
-                                                            ),
-                                                          ]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "option",
-                                                          {
-                                                            attrs: {
-                                                              value:
-                                                                "Senior High",
-                                                            },
-                                                          },
-                                                          [
-                                                            _vm._v(
-                                                              "\n                                    Senior High\n                                  "
-                                                            ),
-                                                          ]
-                                                        ),
-                                                        _vm._v(" "),
-                                                        _c(
-                                                          "option",
-                                                          {
-                                                            attrs: {
-                                                              value:
-                                                                "College Level",
-                                                            },
-                                                          },
-                                                          [
-                                                            _vm._v(
-                                                              "\n                                    College Level\n                                  "
-                                                            ),
-                                                          ]
-                                                        ),
-                                                      ]
-                                                    ),
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "form-group col-md-3",
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "label",
-                                                      {
-                                                        attrs: {
-                                                          for: "task-title",
-                                                        },
-                                                      },
-                                                      [_vm._v("Name of School")]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c("input", {
-                                                      staticClass:
-                                                        "form-control",
-                                                      attrs: {
-                                                        id: "task-title",
-                                                        type: "text",
-                                                      },
-                                                      domProps: {
-                                                        value:
-                                                          data.nameofschool,
-                                                      },
-                                                    }),
-                                                  ]
-                                                ),
-                                              ]
-                                            : _vm._e(),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-12",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("Barangay")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "select",
-                                                {
-                                                  staticClass: "form-control",
-                                                  domProps: {
-                                                    value: data.barangay,
-                                                  },
-                                                },
-                                                [
-                                                  _c(
-                                                    "option",
-                                                    {
-                                                      attrs: {
-                                                        disabled: "",
-                                                        value: "",
-                                                      },
-                                                    },
-                                                    [
-                                                      _vm._v(
-                                                        "\n                                  Select Barangay\n                                "
-                                                      ),
-                                                    ]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "option",
-                                                    {
-                                                      attrs: {
-                                                        value: "BRITANIA",
-                                                      },
-                                                    },
-                                                    [_vm._v("BRITANIA")]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "option",
-                                                    {
-                                                      attrs: {
-                                                        value: "BUATONG",
-                                                      },
-                                                    },
-                                                    [_vm._v("BUATONG")]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "option",
-                                                    {
-                                                      attrs: {
-                                                        value: "BUHISAN",
-                                                      },
-                                                    },
-                                                    [_vm._v("BUHISAN")]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "option",
-                                                    {
-                                                      attrs: { value: "GATA" },
-                                                    },
-                                                    [_vm._v("GATA")]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "option",
-                                                    {
-                                                      attrs: {
-                                                        value: "HORNASAN",
-                                                      },
-                                                    },
-                                                    [_vm._v("HORNASAN")]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "option",
-                                                    {
-                                                      attrs: {
-                                                        value: "JANIPAAN",
-                                                      },
-                                                    },
-                                                    [_vm._v("JANIPAAN")]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "option",
-                                                    {
-                                                      attrs: {
-                                                        value: "KAUSWAGAN",
-                                                      },
-                                                    },
-                                                    [_vm._v("KAUSWAGAN")]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "option",
-                                                    {
-                                                      attrs: {
-                                                        value: "OTIEZA",
-                                                      },
-                                                    },
-                                                    [_vm._v("OTIEZA")]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "option",
-                                                    {
-                                                      attrs: {
-                                                        value: "POBLACION",
-                                                      },
-                                                    },
-                                                    [_vm._v("POBLACION")]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "option",
-                                                    {
-                                                      attrs: {
-                                                        value: "PUNGTOD",
-                                                      },
-                                                    },
-                                                    [_vm._v("PUNGTOD")]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "option",
-                                                    {
-                                                      attrs: {
-                                                        value: "PONG-ON",
-                                                      },
-                                                    },
-                                                    [_vm._v("PONG-ON")]
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "option",
-                                                    {
-                                                      attrs: {
-                                                        value: "SALVACION",
-                                                      },
-                                                    },
-                                                    [_vm._v("SALVACION")]
-                                                  ),
-                                                ]
-                                              ),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-12",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("Address")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("input", {
-                                                staticClass: "form-control",
-                                                attrs: {
-                                                  id: "task-title",
-                                                  type: "text",
-                                                },
-                                                domProps: {
-                                                  value: data.address,
-                                                },
-                                              }),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-4",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("Adolescent Matter")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("input", {
-                                                staticClass: "form-control",
-                                                attrs: {
-                                                  id: "task-title",
-                                                  type: "text",
-                                                },
-                                                domProps: {
-                                                  value: data.adolescent,
-                                                },
-                                              }),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-4",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("Ethnicity")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("input", {
-                                                staticClass: "form-control",
-                                                attrs: {
-                                                  id: "task-title",
-                                                  type: "text",
-                                                },
-                                                domProps: {
-                                                  value: data.ethnicity,
-                                                },
-                                              }),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-4",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("Disability")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("input", {
-                                                staticClass: "form-control",
-                                                attrs: {
-                                                  id: "task-title",
-                                                  type: "text",
-                                                },
-                                                domProps: {
-                                                  value: data.disability,
-                                                },
-                                              }),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-4",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("Name of Relation")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("input", {
-                                                staticClass: "form-control",
-                                                attrs: {
-                                                  id: "task-title",
-                                                  type: "text",
-                                                },
-                                                domProps: {
-                                                  value: data.nameofemergency,
-                                                },
-                                              }),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-4",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("Relation")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("input", {
-                                                staticClass: "form-control",
-                                                attrs: {
-                                                  id: "task-title",
-                                                  type: "text",
-                                                },
-                                                domProps: {
-                                                  value:
-                                                    data.relationofemergency,
-                                                },
-                                              }),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-4",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("Contact Number:")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("input", {
-                                                staticClass: "form-control",
-                                                attrs: {
-                                                  id: "task-title",
-                                                  type: "text",
-                                                },
-                                                domProps: {
-                                                  value:
-                                                    data.contactnoofemergency,
-                                                },
-                                              }),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-6",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("4p's Member")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("input", {
-                                                staticClass: "form-control",
-                                                attrs: {
-                                                  id: "task-title",
-                                                  type: "text",
-                                                },
-                                                domProps: {
-                                                  value: data.benefitstype,
-                                                },
-                                              }),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-6",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("4p's No")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("input", {
-                                                staticClass: "form-control",
-                                                attrs: {
-                                                  id: "task-title",
-                                                  type: "text",
-                                                },
-                                                domProps: {
-                                                  value: data.forpsno,
-                                                },
-                                              }),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-6",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("Philhealth Member")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("input", {
-                                                staticClass: "form-control",
-                                                attrs: {
-                                                  id: "task-title",
-                                                  type: "text",
-                                                },
-                                                domProps: {
-                                                  value: data.Philhealth,
-                                                },
-                                              }),
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "form-group col-md-6",
-                                            },
-                                            [
-                                              _c(
-                                                "label",
-                                                {
-                                                  attrs: { for: "task-title" },
-                                                },
-                                                [_vm._v("Philhealth No")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("input", {
-                                                staticClass: "form-control",
-                                                attrs: {
-                                                  id: "task-title",
-                                                  type: "text",
-                                                },
-                                                domProps: {
-                                                  value: data.Philhealth_no,
-                                                },
-                                              }),
-                                            ]
-                                          ),
-                                        ],
-                                        2
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-primary",
-                                          attrs: {
-                                            type: "button",
-                                            "data-bs-dismiss": "modal",
-                                          },
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                            Update Profile\n                          "
-                                          ),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-secondary",
-                                          on: {
-                                            click: function ($event) {
-                                              return _vm.archive(data.id)
-                                            },
-                                          },
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                            Archive\n                          "
-                                          ),
-                                        ]
-                                      ),
-                                    ]),
-                                  ]),
-                                ]
+                                [_vm._v(_vm._s(page))]
                               ),
                             ]
-                          ),
-                        ])
-                      }),
-                      0
+                          )
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "li",
+                          {
+                            staticClass: "page-item",
+                            class: {
+                              disabled:
+                                _vm.profiles.current_page ===
+                                _vm.profiles.last_page,
+                            },
+                          },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "page-link",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function ($event) {
+                                    $event.preventDefault()
+                                    return _vm.changePage(
+                                      _vm.profiles.current_page + 1
+                                    )
+                                  },
+                                },
+                              },
+                              [_c("i", { staticClass: "fas fa-chevron-right" })]
+                            ),
+                          ]
+                        ),
+                      ],
+                      2
                     ),
-                  ]
-                ),
-                _vm._v(" "),
-                _c("pagination", {
-                  attrs: { pagination: _vm.pagination },
-                  on: {
-                    prev: function ($event) {
-                      return _vm.getData(_vm.pagination.prevPageUrl)
-                    },
-                    next: function ($event) {
-                      return _vm.getData(_vm.pagination.nextPageUrl)
-                    },
-                  },
-                }),
-              ],
-              1
-            ),
+                  ])
+                : _vm._e(),
+            ]),
           ]),
         ]),
       ]),
     ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "viewProfileModal",
+          tabindex: "-1",
+          "aria-labelledby": "viewProfileModalLabel",
+          "aria-hidden": "true",
+        },
+      },
+      [
+        _c("div", { staticClass: "modal-dialog modal-lg" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("form", [
+                _c("div", { staticClass: "row g-3" }, [
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-label",
+                        attrs: { for: "profileNo" },
+                      },
+                      [_vm._v("Profile No")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.profile_no,
+                          expression: "formData.profile_no",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "profileNo", readonly: "" },
+                      domProps: { value: _vm.formData.profile_no },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "profile_no",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-label",
+                        attrs: { for: "firstname" },
+                      },
+                      [_vm._v("First Name")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.firstname,
+                          expression: "formData.firstname",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "firstname", readonly: "" },
+                      domProps: { value: _vm.formData.firstname },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "firstname",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-label",
+                        attrs: { for: "middlename" },
+                      },
+                      [_vm._v("Middle Name")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.middlename,
+                          expression: "formData.middlename",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "middlename", readonly: "" },
+                      domProps: { value: _vm.formData.middlename },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "middlename",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      { staticClass: "form-label", attrs: { for: "lastname" } },
+                      [_vm._v("Last Name")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.lastname,
+                          expression: "formData.lastname",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "lastname", readonly: "" },
+                      domProps: { value: _vm.formData.lastname },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "lastname",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-label",
+                        attrs: { for: "birthdate" },
+                      },
+                      [_vm._v("Birthdate")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.birthdate,
+                          expression: "formData.birthdate",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "birthdate", readonly: "" },
+                      domProps: { value: _vm.formData.birthdate },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "birthdate",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      { staticClass: "form-label", attrs: { for: "gender" } },
+                      [_vm._v("Gender")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.gender,
+                          expression: "formData.gender",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "gender", readonly: "" },
+                      domProps: { value: _vm.formData.gender },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.formData, "gender", $event.target.value)
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      { staticClass: "form-label", attrs: { for: "barangay" } },
+                      [_vm._v("Barangay")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.barangay,
+                          expression: "formData.barangay",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "barangay", readonly: "" },
+                      domProps: { value: _vm.formData.barangay },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "barangay",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-label",
+                        attrs: { for: "childClassification" },
+                      },
+                      [_vm._v("Child Classification")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.childClassification,
+                          expression: "formData.childClassification",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "childClassification",
+                        readonly: "",
+                      },
+                      domProps: { value: _vm.formData.childClassification },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "childClassification",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _vm.formData.childClassification === "In School Youth"
+                    ? _c("div", { staticClass: "col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label",
+                            attrs: { for: "nameofschool" },
+                          },
+                          [_vm._v("Type of School")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formData.inschool,
+                              expression: "formData.inschool",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "nameofschool",
+                            readonly: "",
+                          },
+                          domProps: { value: _vm.formData.inschool },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.formData,
+                                "inschool",
+                                $event.target.value
+                              )
+                            },
+                          },
+                        }),
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.formData.childClassification === "In School Youth"
+                    ? _c("div", { staticClass: "col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label",
+                            attrs: { for: "schoollevel" },
+                          },
+                          [_vm._v("School Level")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formData.schoollevel,
+                              expression: "formData.schoollevel",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "schoollevel",
+                            readonly: "",
+                          },
+                          domProps: { value: _vm.formData.schoollevel },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.formData,
+                                "schoollevel",
+                                $event.target.value
+                              )
+                            },
+                          },
+                        }),
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-label",
+                        attrs: { for: "disability" },
+                      },
+                      [_vm._v("Disability")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.disability,
+                          expression: "formData.disability",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "disability", readonly: "" },
+                      domProps: { value: _vm.formData.disability },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "disability",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      { staticClass: "form-label", attrs: { for: "forpsno" } },
+                      [_vm._v("4ps Member")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.forpsno,
+                          expression: "formData.forpsno",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "forpsno", readonly: "" },
+                      domProps: { value: _vm.formData.forpsno },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.formData, "forpsno", $event.target.value)
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      { staticClass: "form-label", attrs: { for: "status" } },
+                      [_vm._v("Status")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.status,
+                          expression: "formData.status",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "status", readonly: "" },
+                      domProps: { value: _vm.formData.status },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.formData, "status", $event.target.value)
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _vm._m(3),
+          ]),
+        ]),
+      ]
+    ),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header border-0" }, [
+      _c("div", { staticClass: "d-flex align-items-center" }, [
+        _c("h5", { staticClass: "card-title mb-0 flex-grow-1" }, [
+          _vm._v("List of All Profile - GATA"),
+        ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("No")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Profile No")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Birthdate")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Gender")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Barangay")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Child Classification")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Disability")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("School Level")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("4ps Member")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Status")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "viewProfileModalLabel" } },
+        [_vm._v("\n            Profile Details\n          ")]
+      ),
+      _vm._v(" "),
+      _c("button", {
+        staticClass: "btn-close",
+        attrs: {
+          type: "button",
+          "data-bs-dismiss": "modal",
+          "aria-label": "Close",
+        },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-bs-dismiss": "modal" },
+        },
+        [_vm._v("\n            Close\n          ")]
+      ),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -56610,6 +55197,10 @@ var render = function () {
                       _c("td", [_vm._v(_vm._s(profile.schoollevel))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.forpsno))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
@@ -57287,6 +55878,10 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("4ps Member")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")]),
@@ -57505,6 +56100,10 @@ var render = function () {
                       _c("td", [_vm._v(_vm._s(profile.schoollevel))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.forpsno))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
@@ -58182,6 +56781,10 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("4ps Member")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")]),
@@ -58400,6 +57003,10 @@ var render = function () {
                       _c("td", [_vm._v(_vm._s(profile.schoollevel))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.forpsno))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
@@ -59077,6 +57684,10 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("4ps Member")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")]),
@@ -59295,6 +57906,10 @@ var render = function () {
                       _c("td", [_vm._v(_vm._s(profile.schoollevel))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.forpsno))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
@@ -59972,6 +58587,10 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("4ps Member")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")]),
@@ -60190,6 +58809,10 @@ var render = function () {
                       _c("td", [_vm._v(_vm._s(profile.schoollevel))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.forpsno))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
@@ -60867,6 +59490,10 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("4ps Member")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")]),
@@ -61085,6 +59712,10 @@ var render = function () {
                       _c("td", [_vm._v(_vm._s(profile.schoollevel))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.forpsno))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
@@ -61762,6 +60393,10 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("4ps Member")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")]),
@@ -61908,1222 +60543,887 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-md-2" }, [
-      _c("div", { staticClass: "control float-left" }, [
-        _c("div", { staticClass: "input-group" }, [
+  return _c("div", [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-12" }, [
+        _c("div", { staticClass: "card", attrs: { id: "invoiceList" } }, [
+          _vm._m(0),
+          _vm._v(" "),
           _c(
-            "select",
+            "div",
             {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.tableData.length,
-                  expression: "tableData.length",
-                },
-              ],
-              staticClass: "form-control",
-              on: {
-                change: [
-                  function ($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function (o) {
-                        return o.selected
-                      })
-                      .map(function (o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.tableData,
-                      "length",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  },
-                  function ($event) {
-                    return _vm.getData()
-                  },
-                ],
-              },
+              staticClass:
+                "card-body bg-light-subtle border border-dashed border-start-0 border-end-0",
             },
-            _vm._l(_vm.perPage, function (records, index) {
-              return _c(
-                "option",
-                { key: index, domProps: { value: records } },
-                [_vm._v("\n            " + _vm._s(records) + "\n          ")]
-              )
-            }),
-            0
-          ),
-        ]),
-      ]),
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-md-12" }, [
-      _c("div", { staticClass: "ibox-body" }, [
-        _c("div", { staticClass: "col-md-12" }, [
-          _c("div", { staticClass: "col-md-12 d-flex justify-content-end" }, [
-            _c("div", { staticClass: "control float-right" }, [
-              _c("div", { staticClass: "input-group" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.tableData.search,
-                      expression: "tableData.search",
-                    },
-                  ],
-                  staticClass: "input form-control",
-                  attrs: { type: "text", placeholder: "Search" },
-                  domProps: { value: _vm.tableData.search },
-                  on: {
-                    input: [
-                      function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.tableData, "search", $event.target.value)
-                      },
-                      function ($event) {
-                        return _vm.getData()
-                      },
-                    ],
-                  },
-                }),
+            [
+              _c("form", [
+                _c("div", { staticClass: "row g-3" }, [
+                  _c("div", { staticClass: "col-xxl-5 col-sm-12" }, [
+                    _c("div", { staticClass: "search-box" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.searchQuery,
+                            expression: "searchQuery",
+                          },
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text", placeholder: "Search..." },
+                        domProps: { value: _vm.searchQuery },
+                        on: {
+                          input: [
+                            function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.searchQuery = $event.target.value
+                            },
+                            _vm.getDataProfile,
+                          ],
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c("i", { staticClass: "ri-search-line search-icon" }),
+                    ]),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-xxl-3 col-sm-4" }, [
+                    _c("div", { staticClass: "input-light" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.perPage,
+                              expression: "perPage",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: [
+                              function ($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function (o) {
+                                    return o.selected
+                                  })
+                                  .map(function (o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.perPage = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              },
+                              _vm.getDataProfile,
+                            ],
+                          },
+                        },
+                        [
+                          _c("option", { attrs: { value: "10" } }, [
+                            _vm._v("10 per page"),
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "20" } }, [
+                            _vm._v("20 per page"),
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "50" } }, [
+                            _vm._v("50 per page"),
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "100" } }, [
+                            _vm._v("100 per page"),
+                          ]),
+                        ]
+                      ),
+                    ]),
+                  ]),
+                ]),
               ]),
-            ]),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "table-responsive" },
-          [
-            _c(
-              "datatable",
-              {
-                attrs: {
-                  columns: _vm.columns,
-                  sortKey: _vm.sortKey,
-                  sortOrders: _vm.sortOrders,
-                },
-                on: { sort: _vm.sortBy },
-              },
-              [
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "table-responsive" }, [
+              _c("table", { staticClass: "table table-bordered" }, [
+                _vm._m(1),
+                _vm._v(" "),
                 _c(
                   "tbody",
-                  _vm._l(_vm.data, function (data) {
-                    return _c("tr", { key: data.id }, [
-                      _c("td", [_vm._v(_vm._s(data.profile_no))]),
-                      _vm._v(" "),
+                  _vm._l(_vm.profiles.data, function (profile, index) {
+                    return _c("tr", { key: profile.id }, [
                       _c("td", [
                         _vm._v(
-                          "\n                " +
-                            _vm._s(data.lastname) +
-                            "," +
-                            _vm._s(data.firstname) +
-                            "\n                " +
-                            _vm._s(data.middlename) +
-                            " " +
-                            _vm._s(data.extension) +
-                            "\n              "
+                          "\n                    " +
+                            _vm._s(
+                              (_vm.profiles.current_page - 1) *
+                                _vm.profiles.per_page +
+                                index +
+                                1
+                            ) +
+                            "\n                  "
                         ),
                       ]),
                       _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.profile_no))]),
+                      _vm._v(" "),
                       _c("td", [
-                        _vm._v("\n                " + _vm._s(data.birthdate)),
-                        _c("br"),
-                        _vm._v(" "),
-                        _c("b", [_vm._v("Age:")]),
-                        _vm._v(" " + _vm._s(data.age) + "\n              "),
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(profile.firstname) +
+                            " " +
+                            _vm._s(profile.middlename) +
+                            ",\n                    " +
+                            _vm._s(profile.lastname) +
+                            "\n                  "
+                        ),
                       ]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(data.ageCategory))]),
+                      _c("td", [_vm._v(_vm._s(profile.birthdate))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(data.gender))]),
+                      _c("td", [_vm._v(_vm._s(profile.gender))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(data.barangay))]),
+                      _c("td", [_vm._v(_vm._s(profile.barangay))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(data.address))]),
+                      _c("td", [_vm._v(_vm._s(profile.childClassification))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(data.status))]),
+                      _c("td", [_vm._v(_vm._s(profile.disability))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.schoollevel))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.forpsno))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
                       _c("td", [
                         _c(
                           "a",
                           {
-                            staticClass: "btn btn-danger",
-                            attrs: { href: "/mswd/view/profile/" + data.id },
+                            staticClass: "btn btn-sm btn-primary",
+                            attrs: {
+                              href: "/mswd/view/" + profile.id,
+                              title: "View",
+                            },
                           },
-                          [_vm._v("View")]
+                          [_c("i", { staticClass: "fas fa-eye" })]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-sm btn-danger ml-2",
+                            attrs: { title: "Delete" },
+                            on: {
+                              click: function ($event) {
+                                return _vm.archiveProfile(profile.id)
+                              },
+                            },
+                          },
+                          [_c("i", { staticClass: "fas fa-trash" })]
                         ),
                       ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "modal fade modal-bookmark",
-                          attrs: {
-                            id: "exampleModal" + data.id,
-                            tabindex: "-1",
-                            role: "dialog",
-                            "aria-labelledby": "exampleModalLabel",
-                            "aria-hidden": "true",
-                          },
-                        },
-                        [
-                          _c(
-                            "div",
-                            {
-                              staticClass: "modal-dialog modal-lg",
-                              attrs: { role: "document" },
-                            },
-                            [
-                              _c("div", { staticClass: "modal-content" }, [
-                                _c("div", { staticClass: "modal-header" }, [
-                                  _c(
-                                    "h5",
-                                    {
-                                      staticClass: "modal-title",
-                                      attrs: { id: "exampleModalLabel" },
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                  Profile #: " +
-                                          _vm._s(data.profile_no) +
-                                          "\n                "
-                                      ),
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("button", {
-                                    staticClass: "btn-close",
-                                    attrs: {
-                                      type: "button",
-                                      "data-bs-dismiss": "modal",
-                                      "aria-label": "Close",
-                                    },
-                                  }),
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "modal-body" }, [
-                                  _c(
-                                    "div",
-                                    { staticClass: "form-row" },
-                                    [
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-3" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("Lastname")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass: "form-control",
-                                            attrs: {
-                                              id: "task-title",
-                                              type: "text",
-                                              required: "",
-                                              autocomplete: "off",
-                                            },
-                                            domProps: { value: data.lastname },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-3" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("Firstname")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass: "form-control",
-                                            attrs: {
-                                              id: "task-title",
-                                              type: "text",
-                                              required: "",
-                                              autocomplete: "off",
-                                            },
-                                            domProps: { value: data.firstname },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-3" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("Middlename")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass: "form-control",
-                                            attrs: {
-                                              id: "task-title",
-                                              type: "text",
-                                              required: "",
-                                              autocomplete: "off",
-                                            },
-                                            domProps: {
-                                              value: data.middlename,
-                                            },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-3" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("Extension")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass: "form-control",
-                                            attrs: {
-                                              id: "task-title",
-                                              type: "text",
-                                              required: "",
-                                              autocomplete: "off",
-                                            },
-                                            domProps: { value: data.extension },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-3" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("Gender")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "select",
-                                            {
-                                              staticClass: "form-control",
-                                              domProps: { value: data.gender },
-                                            },
-                                            [
-                                              _c(
-                                                "option",
-                                                { attrs: { value: "Male" } },
-                                                [_vm._v("Male")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "option",
-                                                { attrs: { value: "Female" } },
-                                                [_vm._v("Female")]
-                                              ),
-                                            ]
-                                          ),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-3" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("Birthdate")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass: "form-control",
-                                            attrs: {
-                                              id: "task-title",
-                                              type: "date",
-                                              required: "",
-                                              autocomplete: "off",
-                                            },
-                                            domProps: { value: data.birthdate },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-3" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("Age")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass: "form-control",
-                                            attrs: {
-                                              id: "task-title",
-                                              type: "text",
-                                              disabled: "",
-                                            },
-                                            domProps: { value: data.age },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-3" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("Age Category")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass: "form-control",
-                                            attrs: {
-                                              id: "task-title",
-                                              type: "text",
-                                              disabled: "",
-                                            },
-                                            domProps: {
-                                              value: data.ageCategory,
-                                            },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      data.ageCategory == "13-18"
-                                        ? [
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass:
-                                                  "form-group col-md-12",
-                                              },
-                                              [
-                                                _c(
-                                                  "label",
-                                                  {
-                                                    attrs: {
-                                                      for: "task-title",
-                                                    },
-                                                  },
-                                                  [_vm._v("LGBT")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("input", {
-                                                  staticClass: "form-control",
-                                                  attrs: {
-                                                    id: "task-title",
-                                                    type: "text",
-                                                    disabled: "",
-                                                  },
-                                                  domProps: {
-                                                    value: data.ageCategory,
-                                                  },
-                                                }),
-                                              ]
-                                            ),
-                                          ]
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      data.ageCategory == "5-12" ||
-                                      data.ageCategory == "0-2" ||
-                                      data.ageCategory == "3-4"
-                                        ? [
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass:
-                                                  "form-group col-md-12",
-                                              },
-                                              [
-                                                _c(
-                                                  "label",
-                                                  {
-                                                    attrs: {
-                                                      for: "task-title",
-                                                    },
-                                                  },
-                                                  [_vm._v("Weight Status")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "select",
-                                                  {
-                                                    staticClass: "form-control",
-                                                    domProps: {
-                                                      value: data.weightstatus,
-                                                    },
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "option",
-                                                      {
-                                                        attrs: {
-                                                          value: "Obese",
-                                                        },
-                                                      },
-                                                      [_vm._v("Obese")]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "option",
-                                                      {
-                                                        attrs: {
-                                                          value: "Stunted",
-                                                        },
-                                                      },
-                                                      [_vm._v("Stunted")]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "option",
-                                                      {
-                                                        attrs: {
-                                                          value: "Stunted",
-                                                        },
-                                                      },
-                                                      [_vm._v("Wasted")]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "option",
-                                                      {
-                                                        attrs: {
-                                                          value: "Overweight",
-                                                        },
-                                                      },
-                                                      [_vm._v("Overweight")]
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            ),
-                                          ]
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      data.ageCategory == "5-12" ||
-                                      data.ageCategory == "13-18"
-                                        ? [
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass:
-                                                  "form-group col-md-3",
-                                              },
-                                              [
-                                                _c(
-                                                  "label",
-                                                  {
-                                                    attrs: {
-                                                      for: "task-title",
-                                                    },
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "Child Classification"
-                                                    ),
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "select",
-                                                  {
-                                                    staticClass: "form-control",
-                                                    domProps: {
-                                                      value:
-                                                        data.childClassification,
-                                                    },
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "option",
-                                                      {
-                                                        attrs: {
-                                                          disabled: "",
-                                                          value: "",
-                                                        },
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "\n                          Select Child Classification\n                        "
-                                                        ),
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "option",
-                                                      {
-                                                        attrs: {
-                                                          value:
-                                                            "In School Youth",
-                                                        },
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "\n                          In School Youth\n                        "
-                                                        ),
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "option",
-                                                      {
-                                                        attrs: {
-                                                          value:
-                                                            "Out of School Youth",
-                                                        },
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "\n                          Out of School Youth\n                        "
-                                                        ),
-                                                      ]
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass:
-                                                  "form-group col-md-3",
-                                              },
-                                              [
-                                                _c(
-                                                  "label",
-                                                  {
-                                                    attrs: {
-                                                      for: "task-title",
-                                                    },
-                                                  },
-                                                  [_vm._v("Type of School")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "select",
-                                                  {
-                                                    staticClass: "form-control",
-                                                    domProps: {
-                                                      value: data.typeofschool,
-                                                    },
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "option",
-                                                      {
-                                                        attrs: {
-                                                          disabled: "",
-                                                          value: "",
-                                                        },
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          "\n                          Select Name of School\n                        "
-                                                        ),
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "option",
-                                                      {
-                                                        attrs: {
-                                                          value: "Private",
-                                                        },
-                                                      },
-                                                      [_vm._v("Private")]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "option",
-                                                      {
-                                                        attrs: {
-                                                          value: "Public",
-                                                        },
-                                                      },
-                                                      [_vm._v("Public")]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "option",
-                                                      {
-                                                        attrs: { value: "ALS" },
-                                                      },
-                                                      [_vm._v("ALS")]
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass:
-                                                  "form-group col-md-3",
-                                              },
-                                              [
-                                                _c(
-                                                  "label",
-                                                  {
-                                                    attrs: {
-                                                      for: "task-title",
-                                                    },
-                                                  },
-                                                  [_vm._v("School Level")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "select",
-                                                  {
-                                                    staticClass: "form-control",
-                                                    domProps: {
-                                                      value: data.schoollevel,
-                                                    },
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "option",
-                                                      {
-                                                        attrs: {
-                                                          value: "Day Care",
-                                                        },
-                                                      },
-                                                      [_vm._v("Day Care")]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "option",
-                                                      {
-                                                        attrs: {
-                                                          value: "Elementary",
-                                                        },
-                                                      },
-                                                      [_vm._v("Elementary")]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "option",
-                                                      {
-                                                        attrs: {
-                                                          value: "High School",
-                                                        },
-                                                      },
-                                                      [_vm._v("High School")]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "option",
-                                                      {
-                                                        attrs: {
-                                                          value: "Senior High",
-                                                        },
-                                                      },
-                                                      [_vm._v("Senior High")]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "option",
-                                                      {
-                                                        attrs: {
-                                                          value:
-                                                            "College Level",
-                                                        },
-                                                      },
-                                                      [_vm._v("College Level")]
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "div",
-                                              {
-                                                staticClass:
-                                                  "form-group col-md-3",
-                                              },
-                                              [
-                                                _c(
-                                                  "label",
-                                                  {
-                                                    attrs: {
-                                                      for: "task-title",
-                                                    },
-                                                  },
-                                                  [_vm._v("Name of School")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("input", {
-                                                  staticClass: "form-control",
-                                                  attrs: {
-                                                    id: "task-title",
-                                                    type: "text",
-                                                  },
-                                                  domProps: {
-                                                    value: data.nameofschool,
-                                                  },
-                                                }),
-                                              ]
-                                            ),
-                                          ]
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-12" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("Barangay")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "select",
-                                            {
-                                              staticClass: "form-control",
-                                              domProps: {
-                                                value: data.barangay,
-                                              },
-                                            },
-                                            [
-                                              _c(
-                                                "option",
-                                                {
-                                                  attrs: {
-                                                    disabled: "",
-                                                    value: "",
-                                                  },
-                                                },
-                                                [_vm._v("Select Barangay")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "option",
-                                                {
-                                                  attrs: { value: "BRITANIA" },
-                                                },
-                                                [_vm._v("BRITANIA")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "option",
-                                                { attrs: { value: "BUATONG" } },
-                                                [_vm._v("BUATONG")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "option",
-                                                { attrs: { value: "BUHISAN" } },
-                                                [_vm._v("BUHISAN")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "option",
-                                                { attrs: { value: "GATA" } },
-                                                [_vm._v("GATA")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "option",
-                                                {
-                                                  attrs: { value: "HORNASAN" },
-                                                },
-                                                [_vm._v("HORNASAN")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "option",
-                                                {
-                                                  attrs: { value: "JANIPAAN" },
-                                                },
-                                                [_vm._v("JANIPAAN")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "option",
-                                                {
-                                                  attrs: { value: "KAUSWAGAN" },
-                                                },
-                                                [_vm._v("KAUSWAGAN")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "option",
-                                                { attrs: { value: "OTIEZA" } },
-                                                [_vm._v("OTIEZA")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "option",
-                                                {
-                                                  attrs: { value: "POBLACION" },
-                                                },
-                                                [_vm._v("POBLACION")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "option",
-                                                { attrs: { value: "PUNGTOD" } },
-                                                [_vm._v("PUNGTOD")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "option",
-                                                { attrs: { value: "PONG-ON" } },
-                                                [_vm._v("PONG-ON")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "option",
-                                                {
-                                                  attrs: { value: "SALVACION" },
-                                                },
-                                                [_vm._v("SALVACION")]
-                                              ),
-                                            ]
-                                          ),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-12" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("Address")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass: "form-control",
-                                            attrs: {
-                                              id: "task-title",
-                                              type: "text",
-                                            },
-                                            domProps: { value: data.address },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-4" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("Adolescent Matter")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass: "form-control",
-                                            attrs: {
-                                              id: "task-title",
-                                              type: "text",
-                                            },
-                                            domProps: {
-                                              value: data.adolescent,
-                                            },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-4" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("Ethnicity")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass: "form-control",
-                                            attrs: {
-                                              id: "task-title",
-                                              type: "text",
-                                            },
-                                            domProps: { value: data.ethnicity },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-4" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("Disability")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass: "form-control",
-                                            attrs: {
-                                              id: "task-title",
-                                              type: "text",
-                                            },
-                                            domProps: {
-                                              value: data.disability,
-                                            },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-4" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("Name of Relation")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass: "form-control",
-                                            attrs: {
-                                              id: "task-title",
-                                              type: "text",
-                                            },
-                                            domProps: {
-                                              value: data.nameofemergency,
-                                            },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-4" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("Relation")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass: "form-control",
-                                            attrs: {
-                                              id: "task-title",
-                                              type: "text",
-                                            },
-                                            domProps: {
-                                              value: data.relationofemergency,
-                                            },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-4" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("Contact Number:")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass: "form-control",
-                                            attrs: {
-                                              id: "task-title",
-                                              type: "text",
-                                            },
-                                            domProps: {
-                                              value: data.contactnoofemergency,
-                                            },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-6" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("4p's Member")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass: "form-control",
-                                            attrs: {
-                                              id: "task-title",
-                                              type: "text",
-                                            },
-                                            domProps: {
-                                              value: data.benefitstype,
-                                            },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-6" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("4p's No")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass: "form-control",
-                                            attrs: {
-                                              id: "task-title",
-                                              type: "text",
-                                            },
-                                            domProps: { value: data.forpsno },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-6" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("Philhealth Member")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass: "form-control",
-                                            attrs: {
-                                              id: "task-title",
-                                              type: "text",
-                                            },
-                                            domProps: {
-                                              value: data.Philhealth,
-                                            },
-                                          }),
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group col-md-6" },
-                                        [
-                                          _c(
-                                            "label",
-                                            { attrs: { for: "task-title" } },
-                                            [_vm._v("Philhealth No")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("input", {
-                                            staticClass: "form-control",
-                                            attrs: {
-                                              id: "task-title",
-                                              type: "text",
-                                            },
-                                            domProps: {
-                                              value: data.Philhealth_no,
-                                            },
-                                          }),
-                                        ]
-                                      ),
-                                    ],
-                                    2
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass: "btn btn-primary",
-                                      attrs: {
-                                        type: "button",
-                                        "data-bs-dismiss": "modal",
-                                      },
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                  Update Profile\n                "
-                                      ),
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass: "btn btn-secondary",
-                                      on: {
-                                        click: function ($event) {
-                                          return _vm.archive(data.id)
-                                        },
-                                      },
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                  Archive\n                "
-                                      ),
-                                    ]
-                                  ),
-                                ]),
-                              ]),
-                            ]
-                          ),
-                        ]
-                      ),
                     ])
                   }),
                   0
                 ),
-              ]
-            ),
-            _c("br"),
-            _vm._v(" "),
-            _c("pagination", {
-              attrs: { pagination: _vm.pagination },
-              on: {
-                prev: function ($event) {
-                  return _vm.getData(_vm.pagination.prevPageUrl)
-                },
-                next: function ($event) {
-                  return _vm.getData(_vm.pagination.nextPageUrl)
-                },
-              },
-            }),
-          ],
-          1
-        ),
+              ]),
+              _vm._v(" "),
+              _vm.profiles.total > _vm.profiles.per_page
+                ? _c("nav", [
+                    _c(
+                      "ul",
+                      { staticClass: "pagination justify-content-end" },
+                      [
+                        _c(
+                          "li",
+                          {
+                            staticClass: "page-item",
+                            class: {
+                              disabled: _vm.profiles.current_page === 1,
+                            },
+                          },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "page-link",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function ($event) {
+                                    $event.preventDefault()
+                                    return _vm.changePage(
+                                      _vm.profiles.current_page - 1
+                                    )
+                                  },
+                                },
+                              },
+                              [_c("i", { staticClass: "fas fa-chevron-left" })]
+                            ),
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.profiles.last_page, function (page) {
+                          return _c(
+                            "li",
+                            {
+                              key: page,
+                              staticClass: "page-item",
+                              class: {
+                                active: page === _vm.profiles.current_page,
+                              },
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "page-link",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function ($event) {
+                                      $event.preventDefault()
+                                      return _vm.changePage(page)
+                                    },
+                                  },
+                                },
+                                [_vm._v(_vm._s(page))]
+                              ),
+                            ]
+                          )
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "li",
+                          {
+                            staticClass: "page-item",
+                            class: {
+                              disabled:
+                                _vm.profiles.current_page ===
+                                _vm.profiles.last_page,
+                            },
+                          },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "page-link",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function ($event) {
+                                    $event.preventDefault()
+                                    return _vm.changePage(
+                                      _vm.profiles.current_page + 1
+                                    )
+                                  },
+                                },
+                              },
+                              [_c("i", { staticClass: "fas fa-chevron-right" })]
+                            ),
+                          ]
+                        ),
+                      ],
+                      2
+                    ),
+                  ])
+                : _vm._e(),
+            ]),
+          ]),
+        ]),
       ]),
     ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "viewProfileModal",
+          tabindex: "-1",
+          "aria-labelledby": "viewProfileModalLabel",
+          "aria-hidden": "true",
+        },
+      },
+      [
+        _c("div", { staticClass: "modal-dialog modal-lg" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("form", [
+                _c("div", { staticClass: "row g-3" }, [
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-label",
+                        attrs: { for: "profileNo" },
+                      },
+                      [_vm._v("Profile No")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.profile_no,
+                          expression: "formData.profile_no",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "profileNo", readonly: "" },
+                      domProps: { value: _vm.formData.profile_no },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "profile_no",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-label",
+                        attrs: { for: "firstname" },
+                      },
+                      [_vm._v("First Name")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.firstname,
+                          expression: "formData.firstname",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "firstname", readonly: "" },
+                      domProps: { value: _vm.formData.firstname },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "firstname",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-label",
+                        attrs: { for: "middlename" },
+                      },
+                      [_vm._v("Middle Name")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.middlename,
+                          expression: "formData.middlename",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "middlename", readonly: "" },
+                      domProps: { value: _vm.formData.middlename },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "middlename",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      { staticClass: "form-label", attrs: { for: "lastname" } },
+                      [_vm._v("Last Name")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.lastname,
+                          expression: "formData.lastname",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "lastname", readonly: "" },
+                      domProps: { value: _vm.formData.lastname },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "lastname",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-label",
+                        attrs: { for: "birthdate" },
+                      },
+                      [_vm._v("Birthdate")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.birthdate,
+                          expression: "formData.birthdate",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "birthdate", readonly: "" },
+                      domProps: { value: _vm.formData.birthdate },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "birthdate",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      { staticClass: "form-label", attrs: { for: "gender" } },
+                      [_vm._v("Gender")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.gender,
+                          expression: "formData.gender",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "gender", readonly: "" },
+                      domProps: { value: _vm.formData.gender },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.formData, "gender", $event.target.value)
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      { staticClass: "form-label", attrs: { for: "barangay" } },
+                      [_vm._v("Barangay")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.barangay,
+                          expression: "formData.barangay",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "barangay", readonly: "" },
+                      domProps: { value: _vm.formData.barangay },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "barangay",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-label",
+                        attrs: { for: "childClassification" },
+                      },
+                      [_vm._v("Child Classification")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.childClassification,
+                          expression: "formData.childClassification",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "childClassification",
+                        readonly: "",
+                      },
+                      domProps: { value: _vm.formData.childClassification },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "childClassification",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _vm.formData.childClassification === "In School Youth"
+                    ? _c("div", { staticClass: "col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label",
+                            attrs: { for: "nameofschool" },
+                          },
+                          [_vm._v("Type of School")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formData.inschool,
+                              expression: "formData.inschool",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "nameofschool",
+                            readonly: "",
+                          },
+                          domProps: { value: _vm.formData.inschool },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.formData,
+                                "inschool",
+                                $event.target.value
+                              )
+                            },
+                          },
+                        }),
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.formData.childClassification === "In School Youth"
+                    ? _c("div", { staticClass: "col-md-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label",
+                            attrs: { for: "schoollevel" },
+                          },
+                          [_vm._v("School Level")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.formData.schoollevel,
+                              expression: "formData.schoollevel",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "schoollevel",
+                            readonly: "",
+                          },
+                          domProps: { value: _vm.formData.schoollevel },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.formData,
+                                "schoollevel",
+                                $event.target.value
+                              )
+                            },
+                          },
+                        }),
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "form-label",
+                        attrs: { for: "disability" },
+                      },
+                      [_vm._v("Disability")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.disability,
+                          expression: "formData.disability",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "disability", readonly: "" },
+                      domProps: { value: _vm.formData.disability },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.formData,
+                            "disability",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      { staticClass: "form-label", attrs: { for: "forpsno" } },
+                      [_vm._v("4ps Member")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.forpsno,
+                          expression: "formData.forpsno",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "forpsno", readonly: "" },
+                      domProps: { value: _vm.formData.forpsno },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.formData, "forpsno", $event.target.value)
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c(
+                      "label",
+                      { staticClass: "form-label", attrs: { for: "status" } },
+                      [_vm._v("Status")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.status,
+                          expression: "formData.status",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "status", readonly: "" },
+                      domProps: { value: _vm.formData.status },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.formData, "status", $event.target.value)
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _vm._m(3),
+          ]),
+        ]),
+      ]
+    ),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header border-0" }, [
+      _c("div", { staticClass: "d-flex align-items-center" }, [
+        _c("h5", { staticClass: "card-title mb-0 flex-grow-1" }, [
+          _vm._v("List of All Profile - Poblacion"),
+        ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("No")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Profile No")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Birthdate")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Gender")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Barangay")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Child Classification")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Disability")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("School Level")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("4ps Member")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Status")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "viewProfileModalLabel" } },
+        [_vm._v("\n            Profile Details\n          ")]
+      ),
+      _vm._v(" "),
+      _c("button", {
+        staticClass: "btn-close",
+        attrs: {
+          type: "button",
+          "data-bs-dismiss": "modal",
+          "aria-label": "Close",
+        },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-bs-dismiss": "modal" },
+        },
+        [_vm._v("\n            Close\n          ")]
+      ),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -63299,6 +61599,10 @@ var render = function () {
                       _c("td", [_vm._v(_vm._s(profile.schoollevel))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.forpsno))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
@@ -63975,6 +62279,10 @@ var staticRenderFns = [
         _c("th", [_vm._v("School Level")]),
         _vm._v(" "),
         _c("th", [_vm._v("4ps Member")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
         _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
@@ -65267,6 +63575,10 @@ var render = function () {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.forpsno))]),
                       _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
+                      _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
                       _c("td", [
@@ -65942,6 +64254,10 @@ var staticRenderFns = [
         _c("th", [_vm._v("School Level")]),
         _vm._v(" "),
         _c("th", [_vm._v("4ps Member")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
         _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
@@ -67710,6 +66026,10 @@ var render = function () {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.forpsno))]),
                       _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
+                      _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
                       _c("td", [
@@ -68386,6 +66706,10 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("4ps Member")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", [_vm._v("Action")]),
@@ -68604,6 +66928,10 @@ var render = function () {
                       _c("td", [_vm._v(_vm._s(profile.schoollevel))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.forpsno))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.ethnicity))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(profile.adolescent))]),
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(profile.status))]),
                       _vm._v(" "),
@@ -69280,6 +67608,10 @@ var staticRenderFns = [
         _c("th", [_vm._v("School Level")]),
         _vm._v(" "),
         _c("th", [_vm._v("4ps Member")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Ethnicity")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Adolescent")]),
         _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),

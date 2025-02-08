@@ -60,15 +60,14 @@
                     <th>Disability</th>
                     <th>School Level</th>
                     <th>4ps Member</th>
+                    <th>Ethnicity</th>
+                    <th>Adolescent</th>
                     <th>Status</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr
-                    v-for="(profile, index) in profiles.data"
-                    :key="profile.id"
-                  >
+                  <tr v-for="(profile, index) in profiles.data" :key="profile.id">
                     <td>
                       {{
                         (profiles.current_page - 1) * profiles.per_page +
@@ -88,19 +87,14 @@
                     <td>{{ profile.disability }}</td>
                     <td>{{ profile.schoollevel }}</td>
                     <td>{{ profile.forpsno }}</td>
+                    <td>{{ profile.ethnicity }}</td>
+                    <td>{{ profile.adolescent }}</td>
                     <td>{{ profile.status }}</td>
-                      <td>
-                      <a :href="'/mswd/view/'+ profile.id"
-                        class="btn btn-sm btn-primary"
-                        title="View"
-                      >
+                    <td>
+                      <a :href="'/mswd/view/' + profile.id" class="btn btn-sm btn-primary" title="View">
                         <i class="fas fa-eye"></i>
                       </a>
-                      <button
-                        @click="archiveProfile(profile.id)"
-                        class="btn btn-sm btn-danger ml-2"
-                        title="Delete"
-                      >
+                      <button @click="archiveProfile(profile.id)" class="btn btn-sm btn-danger ml-2" title="Delete">
                         <i class="fas fa-trash"></i>
                       </button>
                     </td>

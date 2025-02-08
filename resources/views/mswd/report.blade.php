@@ -29,21 +29,21 @@
                             <form action="{{route('filter.summary')}}" method="GET" target="_blank">
                                 <label>Barangay: </label>
                                 <select name="barangay" class="form-control" required>
-    <option value="">Select Barangay</option>
-    <option value="ALL">ALL</option> <!-- Add this line -->
-    <option value="GATA">GATA</option>
-    <option value="BRITANIA">BRITANIA</option>
-    <option value="BUATONG">BUATONG</option>
-    <option value="SALVACION">SALVACION</option>
-    <option value="BUHISAN">BUHISAN</option>
-    <option value="KAUSWAGAN">KAUSWAGAN</option>
-    <option value="POBLACION">POBLACION</option>
-    <option value="OTIEZA">OTIEZA</option>
-    <option value="HORNASAN">HORNASAN</option>
-    <option value="PUNGTOD">PUNGTOD</option>
-    <option value="PONG-ON">PONG-ON</option>
-    <option value="JANIPAAN">JANIPAAN</option>
-</select> <br> 
+                                        <option value="">Select Barangay</option>
+                                        <option value="ALL">ALL</option> <!-- Add this line -->
+                                        <option value="GATA">GATA</option>
+                                        <option value="BRITANIA">BRITANIA</option>
+                                        <option value="BUATONG">BUATONG</option>
+                                        <option value="SALVACION">SALVACION</option>
+                                        <option value="BUHISAN">BUHISAN</option>
+                                        <option value="KAUSWAGAN">KAUSWAGAN</option>
+                                        <option value="POBLACION">POBLACION</option>
+                                        <option value="OTIEZA">OTIEZA</option>
+                                        <option value="HORNASAN">HORNASAN</option>
+                                        <option value="PUNGTOD">PUNGTOD</option>
+                                        <option value="PONG-ON">PONG-ON</option>
+                                        <option value="JANIPAAN">JANIPAAN</option>
+                                    </select> <br> 
                                     <label>Category: </label>
 
                                     <select name="sel_type" id="sel_type"  class="form-control" required>
@@ -143,68 +143,39 @@
                         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
 <script>
- $('#sel_type').on('change',function(){
-    $('#div_id_number').hide(500);
-            $('#div_id_gender').hide(500);
-            $('#div_id_agecategory').hide(500);
-            $('#div_id_filterage').hide(500);
-            $('#div_id_classification').hide(500);
-            $('#div_id_weight').hide(500);
-          
-           
-            var set_type=$('#sel_type').val();
-            if(set_type=="Gender"){
-                $('#div_id_gender').show(500);
-                $('#div_id_civil').hide(500);
-                $('#div_id_classification').hide(500);
-                $('#div_id_weight').hide(500);
-              
-            }
-            if(set_type=="Age Category"){
-                $('#div_id_agecategory').show(500);
-                $('#div_id_gender').hide(500);
-                $('#div_id_classification').hide(500);
-                $('#div_id_weight').hide(500);
-                $('#div_id_filterage').hide(500);
-              
-            }
-            if(set_type=="Age"){
-                $('#div_id_agecategory').hide(500);
-                $('#div_id_gender').hide(500);
-                $('#div_id_classification').hide(500);
-                $('#div_id_weight').hide(500);
-                $('#div_id_filterage').show(500);
-              
-            }
-            if(set_type=="Child Classification"){
-                $('#div_id_agecategory').hide(500);
-                $('#div_id_gender').hide(500);
-                $('#div_id_classification').show(500);
-                $('#div_id_weight').hide(500);
-              
-            }
-            if(set_type=="LGBT"){
-                $('#div_id_agecategory').hide(500);
-                $('#div_id_gender').hide(500);
-                $('#div_id_classification').hide(500);
-                $('#div_id_lgbt').show(500);
-                $('#div_id_weight').hide(500);
-              
-            }
-            if(set_type=="Weight Status"){
-                $('#div_id_agecategory').hide(500);
-                $('#div_id_gender').hide(500);
-                $('#div_id_classification').hide(500);
-                $('#div_id_lgbt').hide(500);
-                $('#div_id_weight').show(500);
-              
-            }
-           
-           
+ $('#sel_type').on('change', function () {
+    // Hide all fields initially
+    $('#div_id_gender').hide(500);
+    $('#div_id_agecategory').hide(500);
+    $('#div_id_filterage').hide(500);
+    $('#div_id_classification').hide(500);
+    $('#div_id_lgbt').hide(500);
+    $('#div_id_weight').hide(500);
+  
+    var set_type = $('#sel_type').val();
+  
+    // Show the fields based on the selected category
+    if (set_type == "Gender") {
+        $('#div_id_gender').show(500);
+    }
+    if (set_type == "Age Category") {
+        $('#div_id_agecategory').show(500);
+        $('#div_id_gender').show(500); // Show gender field when Age Category is selected
+    }
+    if (set_type == "Age") {
+        $('#div_id_filterage').show(500);
+    }
+    if (set_type == "Child Classification") {
+        $('#div_id_classification').show(500);
+    }
+    if (set_type == "LGBT") {
+        $('#div_id_lgbt').show(500);
+    }
+    if (set_type == "Weight Status") {
+        $('#div_id_weight').show(500);
+    }
+});
 
-           
-           
- })
  </script>
                   
 

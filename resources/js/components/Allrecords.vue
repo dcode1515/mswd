@@ -9,31 +9,20 @@
             </div>
           </div>
 
-          <div
-            class="card-body bg-light-subtle border border-dashed border-start-0 border-end-0"
-          >
+          <div class="card-body bg-light-subtle border border-dashed border-start-0 border-end-0">
             <form>
               <div class="row g-3">
                 <div class="col-xxl-5 col-sm-12">
                   <div class="search-box">
-                    <input
-                      type="text"
-                      class="form-control"
-                      v-model="searchQuery"
-                      @input="getDataProfile"
-                      placeholder="Search..."
-                    />
+                    <input type="text" class="form-control" v-model="searchQuery" @input="getDataProfile"
+                      placeholder="Search..." />
                     <i class="ri-search-line search-icon"></i>
                   </div>
                 </div>
 
                 <div class="col-xxl-3 col-sm-4">
                   <div class="input-light">
-                    <select
-                      class="form-control"
-                      v-model="perPage"
-                      @change="getDataProfile"
-                    >
+                    <select class="form-control" v-model="perPage" @change="getDataProfile">
                       <option value="10">10 per page</option>
                       <option value="20">20 per page</option>
                       <option value="50">50 per page</option>
@@ -60,16 +49,15 @@
                     <th>Disability</th>
                     <th>School Level</th>
                     <th>4ps Member</th>
+                    <th>Ethnicity</th>
+                    <th>Adolescent</th>
                     <th>Status</th>
                     <th>Action</th>
                     <!-- <th>Action</th> -->
                   </tr>
                 </thead>
                 <tbody>
-                  <tr
-                    v-for="(profile, index) in profiles.data"
-                    :key="profile.id"
-                  >
+                  <tr v-for="(profile, index) in profiles.data" :key="profile.id">
                     <td>
                       {{
                         (profiles.current_page - 1) * profiles.per_page +
@@ -89,19 +77,14 @@
                     <td>{{ profile.disability }}</td>
                     <td>{{ profile.schoollevel }}</td>
                     <td>{{ profile.forpsno }}</td>
+                    <td>{{ profile.ethnicity }}</td>
+                    <td>{{ profile.adolescent }}</td>
                     <td>{{ profile.status }}</td>
                     <td>
-                      <a :href="'/mswd/view/'+ profile.id"
-                        class="btn btn-sm btn-primary"
-                        title="View"
-                      >
+                      <a :href="'/mswd/view/' + profile.id" class="btn btn-sm btn-primary" title="View">
                         <i class="fas fa-eye"></i>
                       </a>
-                      <button
-                        @click="archiveProfile(profile.id)"
-                        class="btn btn-sm btn-danger ml-2"
-                        title="Delete"
-                      >
+                      <button @click="archiveProfile(profile.id)" class="btn btn-sm btn-danger ml-2" title="Delete">
                         <i class="fas fa-trash"></i>
                       </button>
                     </td>
@@ -110,47 +93,28 @@
               </table>
               <nav v-if="profiles.total > profiles.per_page">
                 <ul class="pagination justify-content-end">
-                  <li
-                    class="page-item"
-                    :class="{ disabled: profiles.current_page === 1 }"
-                  >
-                    <a
-                      class="page-link"
-                      href="#"
-                      @click.prevent="changePage(profiles.current_page - 1)"
-                    >
+                  <!-- Previous Button -->
+                  <li class="page-item" :class="{ disabled: profiles.current_page === 1 }">
+                    <a class="page-link" href="#" @click.prevent="changePage(profiles.current_page - 1)">
                       <i class="fas fa-chevron-left"></i>
                     </a>
                   </li>
-                  <li
-                    class="page-item"
-                    v-for="page in profiles.last_page"
-                    :key="page"
-                    :class="{ active: page === profiles.current_page }"
-                  >
-                    <a
-                      class="page-link"
-                      href="#"
-                      @click.prevent="changePage(page)"
-                      >{{ page }}</a
-                    >
+
+                  <!-- Pages 1-10 Display -->
+                  <li v-for="page in getPagesToShow()" :key="page" class="page-item"
+                    :class="{ active: page === profiles.current_page }">
+                    <a class="page-link" href="#" @click.prevent="changePage(page)">{{ page }}</a>
                   </li>
-                  <li
-                    class="page-item"
-                    :class="{
-                      disabled: profiles.current_page === profiles.last_page,
-                    }"
-                  >
-                    <a
-                      class="page-link"
-                      href="#"
-                      @click.prevent="changePage(profiles.current_page + 1)"
-                    >
+
+                  <!-- Next Button -->
+                  <li class="page-item" :class="{ disabled: profiles.current_page === profiles.last_page }">
+                    <a class="page-link" href="#" @click.prevent="changePage(profiles.current_page + 1)">
                       <i class="fas fa-chevron-right"></i>
                     </a>
                   </li>
                 </ul>
               </nav>
+
             </div>
           </div>
         </div>
@@ -158,25 +122,15 @@
     </div>
 
     <!-- Modal for Viewing Profile -->
-    <div
-      class="modal fade"
-      id="viewProfileModal"
-      tabindex="-1"
-      aria-labelledby="viewProfileModalLabel"
-      aria-hidden="true"
-    >
+    <div class="modal fade" id="viewProfileModal" tabindex="-1" aria-labelledby="viewProfileModalLabel"
+      aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="viewProfileModalLabel">
               Profile Details
             </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <form>
@@ -184,159 +138,66 @@
                 <!-- Personal Information -->
                 <div class="col-md-6">
                   <label for="profileNo" class="form-label">Profile No</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="profileNo"
-                    v-model="formData.profile_no"
-                    readonly
-                  />
+                  <input type="text" class="form-control" id="profileNo" v-model="formData.profile_no" readonly />
                 </div>
                 <div class="col-md-6">
                   <label for="firstname" class="form-label">First Name</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="firstname"
-                    v-model="formData.firstname"
-                    readonly
-                  />
+                  <input type="text" class="form-control" id="firstname" v-model="formData.firstname" readonly />
                 </div>
                 <div class="col-md-6">
                   <label for="middlename" class="form-label">Middle Name</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="middlename"
-                    v-model="formData.middlename"
-                    readonly
-                  />
+                  <input type="text" class="form-control" id="middlename" v-model="formData.middlename" readonly />
                 </div>
                 <div class="col-md-6">
                   <label for="lastname" class="form-label">Last Name</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="lastname"
-                    v-model="formData.lastname"
-                    readonly
-                  />
+                  <input type="text" class="form-control" id="lastname" v-model="formData.lastname" readonly />
                 </div>
                 <div class="col-md-6">
                   <label for="birthdate" class="form-label">Birthdate</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="birthdate"
-                    v-model="formData.birthdate"
-                    readonly
-                  />
+                  <input type="text" class="form-control" id="birthdate" v-model="formData.birthdate" readonly />
                 </div>
                 <div class="col-md-6">
                   <label for="gender" class="form-label">Gender</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="gender"
-                    v-model="formData.gender"
-                    readonly
-                  />
+                  <input type="text" class="form-control" id="gender" v-model="formData.gender" readonly />
                 </div>
                 <div class="col-md-6">
                   <label for="barangay" class="form-label">Barangay</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="barangay"
-                    v-model="formData.barangay"
-                    readonly
-                  />
+                  <input type="text" class="form-control" id="barangay" v-model="formData.barangay" readonly />
                 </div>
 
                 <!-- Child Classification and School Details -->
                 <div class="col-md-6">
-                  <label for="childClassification" class="form-label"
-                    >Child Classification</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="childClassification"
-                    v-model="formData.childClassification"
-                    readonly
-                  />
+                  <label for="childClassification" class="form-label">Child Classification</label>
+                  <input type="text" class="form-control" id="childClassification"
+                    v-model="formData.childClassification" readonly />
                 </div>
-                <div
-                  class="col-md-6"
-                  v-if="formData.childClassification === 'In School Youth'"
-                >
-                  <label for="nameofschool" class="form-label"
-                    >Type of School</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="nameofschool"
-                    v-model="formData.inschool"
-                    readonly
-                  />
+                <div class="col-md-6" v-if="formData.childClassification === 'In School Youth'">
+                  <label for="nameofschool" class="form-label">Type of School</label>
+                  <input type="text" class="form-control" id="nameofschool" v-model="formData.inschool" readonly />
                 </div>
-                <div
-                  class="col-md-6"
-                  v-if="formData.childClassification === 'In School Youth'"
-                >
-                  <label for="schoollevel" class="form-label"
-                    >School Level</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="schoollevel"
-                    v-model="formData.schoollevel"
-                    readonly
-                  />
+                <div class="col-md-6" v-if="formData.childClassification === 'In School Youth'">
+                  <label for="schoollevel" class="form-label">School Level</label>
+                  <input type="text" class="form-control" id="schoollevel" v-model="formData.schoollevel" readonly />
                 </div>
 
                 <!-- Additional Information -->
                 <div class="col-md-6">
                   <label for="disability" class="form-label">Disability</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="disability"
-                    v-model="formData.disability"
-                    readonly
-                  />
+                  <input type="text" class="form-control" id="disability" v-model="formData.disability" readonly />
                 </div>
                 <div class="col-md-6">
                   <label for="forpsno" class="form-label">4ps Member</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="forpsno"
-                    v-model="formData.forpsno"
-                    readonly
-                  />
+                  <input type="text" class="form-control" id="forpsno" v-model="formData.forpsno" readonly />
                 </div>
                 <div class="col-md-6">
                   <label for="status" class="form-label">Status</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="status"
-                    v-model="formData.status"
-                    readonly
-                  />
+                  <input type="text" class="form-control" id="status" v-model="formData.status" readonly />
                 </div>
               </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
               Close
             </button>
           </div>
@@ -377,6 +238,19 @@ export default {
     };
   },
   methods: {
+    getPagesToShow() {
+      let start = 1;
+      let end = Math.min(10, this.profiles.last_page);
+
+      // If the current page is greater than 10, shift the visible pages
+      if (this.profiles.current_page > 10) {
+        start = this.profiles.current_page - 9;  // Show 10 pages centered around the current page
+        end = this.profiles.current_page;
+      }
+
+      // Return the array of page numbers to display
+      return Array.from({ length: end - start + 1 }, (_, i) => i + start);
+    },
     async archiveProfile(id) {
       try {
         // Confirm the archive action

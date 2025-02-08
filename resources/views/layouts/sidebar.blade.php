@@ -32,7 +32,9 @@
                                         <a href="{{route('hornasan.records')}}" class="nav-link" data-key="t-chat"> HORNASAN </a>
                                         <a href="{{route('janipaan.records')}}" class="nav-link" data-key="t-chat"> JANIPAAN </a>
                                         <a href="{{route('kauswagan.records')}}" class="nav-link" data-key="t-chat"> KAUSWAGAN </a>
+                                        <a href="{{route('gata.records')}}" class="nav-link" data-key="t-chat"> GATA </a>
                                         <a href="{{route('otieza.records')}}" class="nav-link" data-key="t-chat"> OTIEZA </a>
+                                        <a href="{{route('poblacion.records')}}" class="nav-link" data-key="t-chat"> POBLACION </a>
                                         <a href="{{route('pungtod.records')}}" class="nav-link" data-key="t-chat"> PUNGTOD </a>
                                         <a href="{{route('pongon.records')}}" class="nav-link" data-key="t-chat"> PONG-ON </a>
                                         <a href="{{route('salvacion.records')}}" class="nav-link" data-key="t-chat"> SALVACION </a>

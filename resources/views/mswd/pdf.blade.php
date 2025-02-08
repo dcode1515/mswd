@@ -68,6 +68,8 @@
                                 <th style="font-size:12px; width:5px;">CHILD CLASSIFICATION</th>
                                 <th style="font-size:12px; width:25px;" >ADDRESS</th>
                                 <th style="font-size:12px; width:25px;" >LGBT</th>
+                                <th style="font-size:12px; width:25px;" >ETHNICITY</th>
+                                <th style="font-size:12px; width:25px;" >ADOLESCENT</th>
                                 <th style="font-size:12px; width:28px;" >WEIGHT STATUS</th>
                               
                             </tr>
@@ -86,6 +88,8 @@
                                 <td style="font-size:12px;  width:5px;">{{$data->childClassification}}</td>
                                 <td style="font-size:12px;  width:25px;">{{$data->address}}</td>
                                 <td style="font-size:12px;  width:25px;">{{$data->lgbt}}</td>
+                                <td style="font-size:12px;  width:25px;">{{$data->ethnicity}}</td>
+                                <td style="font-size:12px;  width:25px;">{{$data->adolescent}}</td>
                                 <td style="font-size:12px;  width:28px;">{{$data->weightstatus}}</td>
                          
                             </tr>

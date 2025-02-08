@@ -1,420 +1,216 @@
 <template>
-  <div class="row">
-    <div class="col-xl-12">
-      <div class="ibox-body">
-        <div class="ibox">
-          <div class="ibox-body">
-            <a v-bind:href="'/mswd/home'" class="btn btn-danger" target="_blank"
-              >Back to Dashboard</a
-            >
-            <div class="control float-right">
-              <br />
-              <div class="input-group">
-                <input
-                  class="input form-control"
-                  type="text"
-                  v-model="tableData.search"
-                  placeholder="Search"
-                  @input="getData()"
-                />
-              </div>
+  <div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card" id="invoiceList">
+          <div class="card-header border-0">
+            <div class="d-flex align-items-center">
+              <h5 class="card-title mb-0 flex-grow-1">List of All Profile - GATA</h5>
             </div>
-            <br /><br /><br />
+          </div>
+
+          <div class="card-body bg-light-subtle border border-dashed border-start-0 border-end-0">
+            <form>
+              <div class="row g-3">
+                <div class="col-xxl-5 col-sm-12">
+                  <div class="search-box">
+                    <input type="text" class="form-control" v-model="searchQuery" @input="getDataProfile"
+                      placeholder="Search..." />
+                    <i class="ri-search-line search-icon"></i>
+                  </div>
+                </div>
+
+                <div class="col-xxl-3 col-sm-4">
+                  <div class="input-light">
+                    <select class="form-control" v-model="perPage" @change="getDataProfile">
+                      <option value="10">10 per page</option>
+                      <option value="20">20 per page</option>
+                      <option value="50">50 per page</option>
+                      <option value="100">100 per page</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="card-body">
             <div class="table-responsive">
-              <datatable
-                :columns="columns"
-                :sortKey="sortKey"
-                :sortOrders="sortOrders"
-                @sort="sortBy"
-              >
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Profile No</th>
+                    <th>Name</th>
+                    <th>Birthdate</th>
+                    <th>Gender</th>
+                    <th>Barangay</th>
+                    <th>Child Classification</th>
+                    <th>Disability</th>
+                    <th>School Level</th>
+                    <th>4ps Member</th>
+                    <th>Ethnicity</th>
+                    <th>Adolescent</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
                 <tbody>
-                  <tr v-for="data in data" :key="data.id">
-                    <td>{{ data.profile_no }}</td>
+                  <tr v-for="(profile, index) in profiles.data" :key="profile.id">
                     <td>
-                      {{ data.lastname }},{{ data.firstname }}
-                      {{ data.middlename }} {{ data.extension }}
+                      {{
+                        (profiles.current_page - 1) * profiles.per_page +
+                        index +
+                        1
+                      }}
                     </td>
+                    <td>{{ profile.profile_no }}</td>
                     <td>
-                      {{ data.birthdate }}<br />
-                      <b>Age:</b> {{ data.age }}
+                      {{ profile.firstname }} {{ profile.middlename }},
+                      {{ profile.lastname }}
                     </td>
-
-                    <td>{{ data.ageCategory }}</td>
-                    <td>{{ data.gender }}</td>
-                    <td>{{ data.barangay }}</td>
-                    <td>{{ data.address }}</td>
-                    <td>{{ data.status }}</td>
+                    <td>{{ profile.birthdate }}</td>
+                    <td>{{ profile.gender }}</td>
+                    <td>{{ profile.barangay }}</td>
+                    <td>{{ profile.childClassification }}</td>
+                    <td>{{ profile.disability }}</td>
+                    <td>{{ profile.schoollevel }}</td>
+                    <td>{{ profile.forpsno }}</td>
+                    <td>{{ profile.ethnicity }}</td>
+                    <td>{{ profile.adolescent }}</td>
+                    <td>{{ profile.status }}</td>
                     <td>
-                        <a v-bind:href="'/mswd/view/profile/' + data.id" class="btn btn-danger">View</a> 
+                      <a :href="'/mswd/view/' + profile.id" class="btn btn-sm btn-primary" title="View">
+                        <i class="fas fa-eye"></i>
+                      </a>
+                      <button @click="archiveProfile(profile.id)" class="btn btn-sm btn-danger ml-2" title="Delete">
+                        <i class="fas fa-trash"></i>
+                      </button>
                     </td>
-                    <div
-                      class="modal fade modal-bookmark"
-                      :id="'exampleModal' + data.id"
-                      tabindex="-1"
-                      role="dialog"
-                      aria-labelledby="exampleModalLabel"
-                      aria-hidden="true"
-                    >
-                      <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">
-                              Profile #: {{ data.profile_no }}
-                            </h5>
-                            <button
-                              class="btn-close"
-                              type="button"
-                              data-bs-dismiss="modal"
-                              aria-label="Close"
-                            ></button>
-                          </div>
-                          <div class="modal-body">
-                            <div class="form-row">
-                              <div class="form-group col-md-3">
-                                <label for="task-title">Lastname</label>
-                                <input
-                                  class="form-control"
-                                  id="task-title"
-                                  :value="data.lastname"
-                                  type="text"
-                                  required=""
-                                  autocomplete="off"
-                                />
-                              </div>
-                              <div class="form-group col-md-3">
-                                <label for="task-title">Firstname</label>
-                                <input
-                                  class="form-control"
-                                  id="task-title"
-                                  :value="data.firstname"
-                                  type="text"
-                                  required=""
-                                  autocomplete="off"
-                                />
-                              </div>
-                              <div class="form-group col-md-3">
-                                <label for="task-title">Middlename</label>
-                                <input
-                                  class="form-control"
-                                  id="task-title"
-                                  type="text"
-                                  :value="data.middlename"
-                                  required=""
-                                  autocomplete="off"
-                                />
-                              </div>
-                              <div class="form-group col-md-3">
-                                <label for="task-title">Extension</label>
-                                <input
-                                  class="form-control"
-                                  id="task-title"
-                                  type="text"
-                                  :value="data.extension"
-                                  required=""
-                                  autocomplete="off"
-                                />
-                              </div>
-                              <div class="form-group col-md-3">
-                                <label for="task-title">Gender</label>
-                                <select
-                                  class="form-control"
-                                  :value="data.gender"
-                                >
-                                  <option value="Male">Male</option>
-                                  <option value="Female">Female</option>
-                                </select>
-                              </div>
-                              <div class="form-group col-md-3">
-                                <label for="task-title">Birthdate</label>
-                                <input
-                                  class="form-control"
-                                  id="task-title"
-                                  type="date"
-                                  :value="data.birthdate"
-                                  required=""
-                                  autocomplete="off"
-                                />
-                              </div>
-                              <div class="form-group col-md-3">
-                                <label for="task-title">Age</label>
-                                <input
-                                  class="form-control"
-                                  id="task-title"
-                                  type="text"
-                                  :value="data.age"
-                                  disabled
-                                />
-                              </div>
-                              <div class="form-group col-md-3">
-                                <label for="task-title">Age Category</label>
-                                <input
-                                  class="form-control"
-                                  id="task-title"
-                                  type="text"
-                                  :value="data.ageCategory"
-                                  disabled
-                                />
-                              </div>
-
-                              <template v-if="data.ageCategory == '13-18'">
-                                <div class="form-group col-md-12">
-                                  <label for="task-title">LGBT</label>
-                                  <input
-                                    class="form-control"
-                                    id="task-title"
-                                    type="text"
-                                    :value="data.ageCategory"
-                                    disabled
-                                  />
-                                </div>
-                              </template>
-                              <template
-                                v-if="
-                                  data.ageCategory == '5-12' ||
-                                  data.ageCategory == '0-2' ||
-                                  data.ageCategory == '3-4'
-                                "
-                              >
-                                <div class="form-group col-md-12">
-                                  <label for="task-title">Weight Status</label>
-                                  <select
-                                    class="form-control"
-                                    :value="data.weightstatus"
-                                  >
-                                    <option value="Obese">Obese</option>
-                                    <option value="Stunted">Stunted</option>
-                                    <option value="Stunted">Wasted</option>
-                                    <option value="Overweight">
-                                      Overweight
-                                    </option>
-                                  </select>
-                                </div>
-                              </template>
-                              <template
-                                v-if="
-                                  data.ageCategory == '5-12' ||
-                                  data.ageCategory == '13-18'
-                                "
-                              >
-                                <div class="form-group col-md-3">
-                                  <label for="task-title"
-                                    >Child Classification</label
-                                  >
-                                  <select
-                                    class="form-control"
-                                    :value="data.childClassification"
-                                  >
-                                    <option disabled value="">
-                                      Select Child Classification
-                                    </option>
-                                    <option value="In School Youth">
-                                      In School Youth
-                                    </option>
-                                    <option value="Out of School Youth">
-                                      Out of School Youth
-                                    </option>
-                                  </select>
-                                </div>
-                                <div class="form-group col-md-3">
-                                  <label for="task-title">Type of School</label>
-                                  <select
-                                    class="form-control"
-                                    :value="data.typeofschool"
-                                  >
-                                    <option disabled value="">
-                                      Select Name of School
-                                    </option>
-                                    <option value="Private">Private</option>
-                                    <option value="Public">Public</option>
-                                    <option value="ALS">ALS</option>
-                                  </select>
-                                </div>
-                                <div class="form-group col-md-3">
-                                  <label for="task-title">School Level</label>
-                                  <select
-                                    class="form-control"
-                                    :value="data.schoollevel"
-                                  >
-                                    <option value="Day Care">Day Care</option>
-                                    <option value="Elementary">
-                                      Elementary
-                                    </option>
-                                    <option value="High School">
-                                      High School
-                                    </option>
-                                    <option value="Senior High">
-                                      Senior High
-                                    </option>
-                                    <option value="College Level">
-                                      College Level
-                                    </option>
-                                  </select>
-                                </div>
-                                <div class="form-group col-md-3">
-                                  <label for="task-title">Name of School</label>
-                                  <input
-                                    class="form-control"
-                                    id="task-title"
-                                    type="text"
-                                    :value="data.nameofschool"
-                                  />
-                                </div>
-                              </template>
-                              <div class="form-group col-md-12">
-                                <label for="task-title">Barangay</label>
-                                <select
-                                  class="form-control"
-                                  :value="data.barangay"
-                                >
-                                  <option disabled value="">
-                                    Select Barangay
-                                  </option>
-                                  <option value="BRITANIA">BRITANIA</option>
-                                  <option value="BUATONG">BUATONG</option>
-                                  <option value="BUHISAN">BUHISAN</option>
-                                  <option value="GATA">GATA</option>
-                                  <option value="HORNASAN">HORNASAN</option>
-                                  <option value="JANIPAAN">JANIPAAN</option>
-                                  <option value="KAUSWAGAN">KAUSWAGAN</option>
-                                  <option value="OTIEZA">OTIEZA</option>
-                                  <option value="POBLACION">POBLACION</option>
-                                  <option value="PUNGTOD">PUNGTOD</option>
-                                  <option value="PONG-ON">PONG-ON</option>
-                                  <option value="SALVACION">SALVACION</option>
-                                </select>
-                              </div>
-                              <div class="form-group col-md-12">
-                                <label for="task-title">Address</label>
-                                <input
-                                  class="form-control"
-                                  id="task-title"
-                                  type="text"
-                                  :value="data.address"
-                                />
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="task-title"
-                                  >Adolescent Matter</label
-                                >
-                                <input
-                                  class="form-control"
-                                  id="task-title"
-                                  type="text"
-                                  :value="data.adolescent"
-                                />
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="task-title">Ethnicity</label>
-                                <input
-                                  class="form-control"
-                                  id="task-title"
-                                  type="text"
-                                  :value="data.ethnicity"
-                                />
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="task-title">Disability</label>
-                                <input
-                                  class="form-control"
-                                  id="task-title"
-                                  type="text"
-                                  :value="data.disability"
-                                />
-                              </div>
-
-                              <div class="form-group col-md-4">
-                                <label for="task-title">Name of Relation</label>
-                                <input
-                                  class="form-control"
-                                  id="task-title"
-                                  type="text"
-                                  :value="data.nameofemergency"
-                                />
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="task-title">Relation</label>
-                                <input
-                                  class="form-control"
-                                  id="task-title"
-                                  type="text"
-                                  :value="data.relationofemergency"
-                                />
-                              </div>
-                              <div class="form-group col-md-4">
-                                <label for="task-title">Contact Number:</label>
-                                <input
-                                  class="form-control"
-                                  id="task-title"
-                                  type="text"
-                                  :value="data.contactnoofemergency"
-                                />
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="task-title">4p's Member</label>
-                                <input
-                                  class="form-control"
-                                  id="task-title"
-                                  type="text"
-                                  :value="data.benefitstype"
-                                />
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="task-title">4p's No</label>
-                                <input
-                                  class="form-control"
-                                  id="task-title"
-                                  type="text"
-                                  :value="data.forpsno"
-                                />
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="task-title"
-                                  >Philhealth Member</label
-                                >
-                                <input
-                                  class="form-control"
-                                  id="task-title"
-                                  type="text"
-                                  :value="data.Philhealth"
-                                />
-                              </div>
-                              <div class="form-group col-md-6">
-                                <label for="task-title">Philhealth No</label>
-                                <input
-                                  class="form-control"
-                                  id="task-title"
-                                  type="text"
-                                  :value="data.Philhealth_no"
-                                />
-                              </div>
-                            </div>
-                            <button
-                              class="btn btn-primary"
-                              type="button"
-                              data-bs-dismiss="modal"
-                            >
-                              Update Profile
-                            </button>
-                            <button
-                              class="btn btn-secondary"
-                              @click="archive(data.id)"
-                            >
-                              Archive
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <!-- <td>
+                      <button
+                        @click="viewProfile(profile)"
+                        class="btn btn-sm btn-primary"
+                        title="View"
+                      >
+                        <i class="fas fa-eye"></i>
+                      </button>
+                      <button
+                        @click="deleteProfile(profile.id)"
+                        class="btn btn-sm btn-danger ml-2"
+                        title="Delete"
+                      >
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </td> -->
                   </tr>
                 </tbody>
-              </datatable>
-              <pagination
-                :pagination="pagination"
-                @prev="getData(pagination.prevPageUrl)"
-                @next="getData(pagination.nextPageUrl)"
-              >
-              </pagination>
+              </table>
+              <nav v-if="profiles.total > profiles.per_page">
+                <ul class="pagination justify-content-end">
+                  <li class="page-item" :class="{ disabled: profiles.current_page === 1 }">
+                    <a class="page-link" href="#" @click.prevent="changePage(profiles.current_page - 1)">
+                      <i class="fas fa-chevron-left"></i>
+                    </a>
+                  </li>
+                  <li class="page-item" v-for="page in profiles.last_page" :key="page"
+                    :class="{ active: page === profiles.current_page }">
+                    <a class="page-link" href="#" @click.prevent="changePage(page)">{{ page }}</a>
+                  </li>
+                  <li class="page-item" :class="{
+                    disabled: profiles.current_page === profiles.last_page,
+                  }">
+                    <a class="page-link" href="#" @click.prevent="changePage(profiles.current_page + 1)">
+                      <i class="fas fa-chevron-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Viewing Profile -->
+    <div class="modal fade" id="viewProfileModal" tabindex="-1" aria-labelledby="viewProfileModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="viewProfileModalLabel">
+              Profile Details
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="row g-3">
+                <!-- Personal Information -->
+                <div class="col-md-6">
+                  <label for="profileNo" class="form-label">Profile No</label>
+                  <input type="text" class="form-control" id="profileNo" v-model="formData.profile_no" readonly />
+                </div>
+                <div class="col-md-6">
+                  <label for="firstname" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="firstname" v-model="formData.firstname" readonly />
+                </div>
+                <div class="col-md-6">
+                  <label for="middlename" class="form-label">Middle Name</label>
+                  <input type="text" class="form-control" id="middlename" v-model="formData.middlename" readonly />
+                </div>
+                <div class="col-md-6">
+                  <label for="lastname" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="lastname" v-model="formData.lastname" readonly />
+                </div>
+                <div class="col-md-6">
+                  <label for="birthdate" class="form-label">Birthdate</label>
+                  <input type="text" class="form-control" id="birthdate" v-model="formData.birthdate" readonly />
+                </div>
+                <div class="col-md-6">
+                  <label for="gender" class="form-label">Gender</label>
+                  <input type="text" class="form-control" id="gender" v-model="formData.gender" readonly />
+                </div>
+                <div class="col-md-6">
+                  <label for="barangay" class="form-label">Barangay</label>
+                  <input type="text" class="form-control" id="barangay" v-model="formData.barangay" readonly />
+                </div>
+
+                <!-- Child Classification and School Details -->
+                <div class="col-md-6">
+                  <label for="childClassification" class="form-label">Child Classification</label>
+                  <input type="text" class="form-control" id="childClassification"
+                    v-model="formData.childClassification" readonly />
+                </div>
+                <div class="col-md-6" v-if="formData.childClassification === 'In School Youth'">
+                  <label for="nameofschool" class="form-label">Type of School</label>
+                  <input type="text" class="form-control" id="nameofschool" v-model="formData.inschool" readonly />
+                </div>
+                <div class="col-md-6" v-if="formData.childClassification === 'In School Youth'">
+                  <label for="schoollevel" class="form-label">School Level</label>
+                  <input type="text" class="form-control" id="schoollevel" v-model="formData.schoollevel" readonly />
+                </div>
+
+                <!-- Additional Information -->
+                <div class="col-md-6">
+                  <label for="disability" class="form-label">Disability</label>
+                  <input type="text" class="form-control" id="disability" v-model="formData.disability" readonly />
+                </div>
+                <div class="col-md-6">
+                  <label for="forpsno" class="form-label">4ps Member</label>
+                  <input type="text" class="form-control" id="forpsno" v-model="formData.forpsno" readonly />
+                </div>
+                <div class="col-md-6">
+                  <label for="status" class="form-label">Status</label>
+                  <input type="text" class="form-control" id="status" v-model="formData.status" readonly />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
           </div>
         </div>
       </div>
@@ -423,130 +219,93 @@
 </template>
 
 <script>
-import Datatable from "./Datatable.vue";
-import Pagination from "./Pagination.vue";
-
 export default {
-  components: { datatable: Datatable, pagination: Pagination },
+  data() {
+    return {
+      profiles: {
+        data: [],
+        current_page: 1,
+        last_page: 1,
+        per_page: 10,
+        total: 0,
+      },
+      formData: {
+        profile_no: "",
+        firstname: "",
+        middlename: "",
+        lastname: "",
+        birthdate: "",
+        gender: "",
+        barangay: "",
+        childClassification: "",
+        inschool: "",
+        schoollevel: "",
+        disability: "",
+        forpsno: "",
+        status: "",
+      },
+      perPage: 10,
+      searchQuery: "",
+    };
+  },
   methods: {
-    archive(id) {
-      Swal.fire({
-        title: "Are you sure want to Archive this Record?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, Archive it!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          axios.post(`/mswd/api/archive/${id}`).then((response) => {});
-
-          Swal.fire("Success!", "Record has been Archived.", "success").then(
-            function () {
-              window.location.href = "/mswd/all-records";
-            }
-          );
-        }
-      });
-      console.log(id);
-    },
-    getData(url = "/mswd/api/get/data/gata") {
-      this.tableData.draw++;
-      axios
-        .get(url, { params: this.tableData })
-        .then((response) => {
-          let data = response.data;
-          if (this.tableData.draw == data.draw) {
-            this.data = data.data.data;
-            this.configPagination(data.data);
-          }
-        })
-        .catch((errors) => {
-          console.log(errors);
+    async getDataProfile() {
+      try {
+        const response = await axios.get("/mswd/api/get/data/gata", {
+          params: {
+            page: this.profiles.current_page,
+            per_page: this.perPage,
+            search: this.searchQuery,
+          },
         });
+        this.profiles = response.data.data;
+      } catch (error) {
+        console.error("Error fetching Profile data:", error);
+      }
     },
-    configPagination(data) {
-      this.pagination.lastPage = data.last_page;
-      this.pagination.currentPage = data.current_page;
-      this.pagination.total = data.total;
-      this.pagination.lastPageUrl = data.last_page_url;
-      this.pagination.nextPageUrl = data.next_page_url;
-      this.pagination.prevPageUrl = data.prev_page_url;
-      this.pagination.from = data.from;
-      this.pagination.to = data.to;
+    viewProfile(profile) {
+      // Populate formData with the selected profile's data
+      this.formData = { ...profile };
+      // Open the modal
+      new bootstrap.Modal(document.getElementById("viewProfileModal")).show();
     },
-    sortBy(key) {
-      this.sortKey = key;
-      this.sortOrders[key] = this.sortOrders[key] * -1;
-      this.tableData.column = this.getIndex(this.columns, "name", key);
-      this.tableData.dir = this.sortOrders[key] === 1 ? "asc" : "desc";
-      this.getData();
-    },
-    getIndex(array, key, value) {
-      return array.findIndex((i) => i[key] == value);
+    changePage(page) {
+      if (page >= 1 && page <= this.profiles.last_page) {
+        this.profiles.current_page = page;
+        this.getDataProfile();
+      }
     },
   },
-
+  created() {
+    this.getDataProfile();
+  },
   mounted() {
     console.log("Component Mounted");
-    this.getData();
-  },
-  data() {
-    let sortOrders = {};
-    let columns = [
-     { width: "8%", label: "PROFILE NO", name: "profile_no" },
-      { width: "15", label: "NAME", no: "name" },
-      { width: "7%", label: "BIRTHDATE", name: "bdate" },
-
-      { width: "9%", label: "AGE CATEGORY", name: "ageCategry" },
-      { width: "8%", label: "GENDER", name: "Gender" },
-      { width: "12%", label: "BARANGAY", name: "barangay" },
-      { width: "20%", label: "ADDRESS", name: "address" },
-      { width: "5%", label: "STATUS", name: "status" },
-      { width: "15%", label: "ACTION", name: "action" },
-    ];
-    columns.forEach((column) => {
-      sortOrders[column.name] = -1;
-    });
-    return {
-      page: 10,
-      data: [],
-      length: 10,
-      search: "",
-      assign: [],
-      selected_user: [],
-      current_page: [],
-      error: "",
-      columns: columns,
-      sortKey: "lastname",
-      sortOrders: sortOrders,
-      perPage: ["10", "20", "30"],
-      tableData: {
-        draw: 0,
-        length: 10,
-        search: "",
-        column: 0,
-        dir: "asc",
-      },
-      pagination: {
-        lastPage: "",
-        currentPage: "",
-        total: "",
-        lastPageUrl: "",
-        nextPageUrl: "",
-        prevPageUrl: "",
-        from: "",
-        to: "",
-      },
-    };
   },
 };
 </script>
 
 <style scoped>
-td {
-  text-transform: uppercase;
+.centered {
+  text-align: center;
+}
+
+.pdf-icon {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.print-icon {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.icon {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.custom-modal-size {
+  max-width: 1200px;
 }
 </style>
-
